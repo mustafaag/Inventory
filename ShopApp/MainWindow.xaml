@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Login Shop Application" Height="auto" Width="500" HorizontalAlignment="Center" Background="#33ccff">
+    <Border Margin="20" Background="#2e3137">
+
+
+        <StackPanel Margin="20"     >
+            <Label Content="Login" Foreground="White" FontSize="30" HorizontalAlignment="Center" FontWeight="Medium" />
+            <Separator/>
+            <Label  Foreground="White" FontSize="20" Margin="20">Username</Label>
+            <TextBox Name="txtUsername" Background="#545d5a" Foreground="White" FontSize="25" Margin="30 0"></TextBox>
+            <Label  Foreground="White" FontSize="20" Margin="20">Password</Label>
+            <PasswordBox Name="txtPassword"   Background="#545d5a" Foreground="White" FontSize="25" Margin="30 0 30 20"></PasswordBox>
+            <Button Name="bntSubmit" Content="Submit" Click="bntSubmit_Click" Background="#545d5a" Foreground="White" FontSize="25" Margin="30 0" />
+
+        </StackPanel>
+    </Border>
+
 </Window>
