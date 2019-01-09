@@ -16,19 +16,26 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0"
           Grid.Column="0"
-          Background="Red"
-          MinHeight="50"
+          MinHeight="70"
           MaxHeight="50"
           VerticalAlignment="Top"
-          Margin="0,10">
-            <Label VerticalAlignment="Top"  Content="Username"  Padding="10,0,0,10"/>
-            <Label  Content="Adresa" VerticalAlignment="Bottom" Padding="10,30,0,0"/>
-            <Label  Content="STORE NAME"  VerticalAlignment="Center"  HorizontalAlignment="Right"/>
+          Margin="-3,-1,-0.4,0" Background="#FFAE9E9E" Height="78">
+            <Label VerticalAlignment="Top"  Content="Username" Margin="79,3,451,0" FontSize="18" />
+            <Label  Content="Adresa" VerticalAlignment="Bottom"  Margin="81,0,446,0" FontSize="18" />
+            <Label  Content="STORE NAME"  VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,25,2,9" Width="131" Height="44" FontSize="18" FontWeight="Bold"/>
+            <Border HorizontalAlignment="Left" Height="64" Margin="5,3,0,0" VerticalAlignment="Top" Width="72" >
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FFD04A4A" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
         </Grid>
-        <Grid Grid.Row="1"
+        <Grid
           Grid.Column="0"
           VerticalAlignment="Stretch"
-          HorizontalAlignment="Stretch" Background="Green">
+          HorizontalAlignment="Stretch" Background="LightGray" Margin="-5,70,-1.4,-259.4" Grid.RowSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="2*" />
@@ -39,12 +46,12 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0"
                   Grid.Column="0"
-                  Background="Red"
+                  Background="LightGray"
                   MaxWidth="50"                 
                   VerticalAlignment="Center"
-                  HorizontalAlignment="Left">
-                    <StackPanel   VerticalAlignment="Stretch">
-                        <Button Content="F1" MinHeight="40"   VerticalAlignment="Stretch" MinWidth="40"/>
+                  HorizontalAlignment="Left" Margin="1,98,0,63" Height="339">
+                    <StackPanel   VerticalAlignment="Stretch" Margin="1,-100,-1,1">
+                        <Button Content="F1" MinHeight="40"   VerticalAlignment="Stretch" MinWidth="40" Click="Button_Click"/>
                         <Button Content="F2" MinHeight="40"   VerticalAlignment="Stretch" MinWidth="40"/>
                         <Button Content="F3" MinHeight="40" MinWidth="40" Width="auto"  VerticalAlignment="Stretch"/>
                         <Button Content="F4" MinHeight="40" MinWidth="40"   VerticalAlignment="Stretch"/>
@@ -52,24 +59,38 @@
                         <Button Content="F6" MinHeight="40" MinWidth="40"   VerticalAlignment="Stretch"/>
                         <Button Content="F7" MinHeight="40" MinWidth="40"   VerticalAlignment="Stretch"/>
                         <Button Content="F8" MinHeight="40" MinWidth="40"  VerticalAlignment="Stretch"/>
-                        <Button Content="F9" MinHeight="40" MinWidth="40"   VerticalAlignment="Stretch"/>
-                        <Button Content="F10" MinHeight="40" MinWidth="40"  VerticalAlignment="Stretch"/>
-                        <Button Content="F11" MinHeight="40" MinWidth="40"  VerticalAlignment="Stretch"/>
+                        <Button Content="F9" MinHeight="40" MinWidth="40"   VerticalAlignment="Stretch" Height="38"/>
+                        <Button Content="F10" MinHeight="40" MinWidth="40"   VerticalAlignment="Stretch" Height="38" Click="Button_Click_3"/>
+                        <Button Content="F11" MinHeight="40" MinWidth="40"   VerticalAlignment="Stretch" Height="28" Click="Button_Click_3"/>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="0"
-                  Grid.Column="1"
-                  Background="Black"
+                  Background="White"
                   VerticalAlignment="Stretch"
-                  HorizontalAlignment="Left" >
-                    <StackPanel>
-                        <DataGrid MinWidth="500" Background="Yellow" VerticalAlignment="Stretch"  HorizontalAlignment="Center">
-                        </DataGrid>
-                    </StackPanel>
+                  HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Margin="41,33,-5,58.8" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="59*"/>
+                        <RowDefinition Height="308*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.RowSpan="3" Margin="0,0,0,-36"/>
                 </Grid>
+                <DataGrid MinWidth="500" Background="Yellow" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Margin="41,-2,-5,407.2" SelectionChanged="DataGrid_SelectionChanged_1"/>
+                <Border HorizontalAlignment="Left" Height="120" Margin="41,449,0,-70.6" VerticalAlignment="Top" Width="340" RenderTransformOrigin="0.507,1.714">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="#FF803939" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Image x:Name="image" Margin="3,98,-2.6,-97.6"/>
+                </Border>
+                <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+                <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Right" Height="69" Margin="0,443,2,-12.8" TextWrapping="Wrap" Text="TOTALI" VerticalAlignment="Top" Width="244" FontSize="24" FontWeight="Bold" TextChanged="TextBox_TextChanged" Background="Yellow"/>
+                <Button x:Name="button" Content="PAGUAJ" Grid.Column="1" HorizontalAlignment="Right" Margin="0,517,2,-71.4" VerticalAlignment="Top" Width="243" Height="52" FontSize="24" FontWeight="Bold" Background="#FF959C96" Click="Button_Click_2"/>
             </Grid>
         </Grid>
-        
+
     </Grid>
-    
+
 </Window>
