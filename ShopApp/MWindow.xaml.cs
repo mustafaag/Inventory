@@ -68,5 +68,25 @@ namespace ShopApp
         {
 
         }
+
+        private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_3(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

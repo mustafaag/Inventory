@@ -7,145 +7,79 @@
         mc:Ignorable="d"
         Title="Shop Application" MinHeight="650" Background="#FF959C96" Foreground="White" MinWidth="1000">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
         <Grid 
           Grid.Column="0"
           Grid.Row="0"
         
-          VerticalAlignment="Stretch" 
+          VerticalAlignment="Stretch" Margin="0,0,0,432" 
          >
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 
                     <GradientStop Color="#FF959C96" Offset="0"/>
-                    <GradientStop Color="LightGray" Offset="1"/>
+                    <GradientStop Color="AliceBlue" Offset="0"/>
                 </LinearGradientBrush>
             </Grid.Background>
 
-            <Label VerticalAlignment="Top"  Content="Username" Foreground="White"  Margin="110,10,0,0" FontSize="15" />
-            <Label  Content="Adresa" VerticalAlignment="Top" Margin="110,30,0,0" Foreground="White" FontSize="15" />
-            <Label  Content="STORE NAME"  VerticalAlignment="Center"  HorizontalAlignment="Right" Foreground="White" Margin="0,0,30,0"  FontSize="16" FontWeight="Bold" />
-            <Border HorizontalAlignment="Left" Height="70" VerticalAlignment="Center" MinWidth="100" Margin="5" >
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF959C96" Offset="0"/>
-                            <GradientStop Color="LightGreen" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-            </Border>
-        </Grid>
-
-        <Grid 
-          Grid.Column="0"
-          Grid.Row="1"
-     
-           HorizontalAlignment="Stretch" Background="LightGray"   VerticalAlignment="Stretch"
-        >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0"
-                  Grid.Column="0"
-                  Background="LightGray"
-                
-                  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" MinWidth="42">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <StackPanel VerticalAlignment="Stretch"  HorizontalAlignment="Stretch">
-
-                        <Button Content="F1" MinHeight="40"  Margin="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="Button_Click"/>
-                        <Button Content="F2" MinHeight="40" Margin="1"  VerticalAlignment="Stretch" MinWidth="40"/>
-                        <Button Content="F3" MinHeight="40"  Margin="1" MinWidth="40" Width="auto"  VerticalAlignment="Stretch"/>
-                        <Button Content="F4" MinHeight="40"  Margin="1" MinWidth="40"   VerticalAlignment="Stretch"/>
-                        <Button Content="F5" MinHeight="40"  Margin="1" MinWidth="40"   VerticalAlignment="Stretch"/>
-                        <Button Content="F6" MinHeight="40"  Margin="1" MinWidth="40"   VerticalAlignment="Stretch"/>
-                        <Button Content="F7" MinHeight="40" Margin="1"  MinWidth="40"   VerticalAlignment="Stretch"/>
-                        <Button Content="F8" MinHeight="40"  Margin="1" MinWidth="40"  VerticalAlignment="Stretch"/>
-                        <Button Content="F9" MinHeight="40"  Margin="1" MinWidth="40"   VerticalAlignment="Stretch" />
-                        <Button Content="F10" MinHeight="40" Margin="1"  MinWidth="40"   VerticalAlignment="Stretch"  Click="Button_Click_3"/>
-                        <Button Content="F11" MinHeight="40"  Margin="1" MinWidth="40"   VerticalAlignment="Stretch"  Click="Button_Click_3" />
-                        <Button Content="F12" MinHeight="40"  Margin="1" MinWidth="40"   VerticalAlignment="Stretch"  Click="Button_Click_3" />
-                    </StackPanel>
-                </ScrollViewer>
-               
-            </Grid>
-            <Grid Grid.Row="0"
-                  Grid.Column="1"
-                  Background="LightGreen"
-                
-                  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" MinWidth="42">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <DataGrid Name = "dataGrid" AlternatingRowBackground = "LightBlue"  ColumnWidth="*"  AlternationCount = "2" AutoGenerateColumns = "False" MinWidth="600" HorizontalAlignment="Stretch" Margin="1,3">
-
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header = "Shifra" Binding = "{Binding Shifra}"  MinWidth="100"  />
-                            <DataGridTextColumn Header = "Emri" Binding = "{Binding Emri}"  MinWidth="100"  />
-                            <DataGridTextColumn Header = "Njesia" Binding = "{Binding Njesia}" MinWidth="100" />
-                            <DataGridTextColumn Header = "Sasia" Binding = "{Binding Sasia}"  MinWidth="100" />
-                            <DataGridTextColumn Header = "Cmimi me TVSH" Binding = "{Binding Cmimi_me_TVSH}" MinWidth="100" />
-                            <DataGridTextColumn Header = "Zbritje" Binding = "{Binding Zbritje}"  MinWidth="100" />
-                            <DataGridTextColumn Header = "Cmimi me Zbritje" Binding = "{Binding Cmimi_me_Zbritje}" MinWidth="100"  />
-                            <DataGridTextColumn Header = "Vlera" Binding = "{Binding Vlera}" MinWidth="100" />
-                        </DataGrid.Columns>
-
-                    </DataGrid>
-                </ScrollViewer>
-            </Grid>
-            <Grid Grid.Row="0"
-                  Grid.Column="2"
-                 
-                
-                  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" MinWidth="42" MaxHeight="500"  >
-              
-                        <TextBox VerticalAlignment="Top" Margin="10,-5" MinHeight="70" FontSize="20" Text="BARCODE" TextAlignment="Center" TextWrapping="NoWrap" Padding="20"/>
-                        <TextBox VerticalAlignment="Top"  Margin="10,90" Height="50"  FontSize="15" Text="Emri" TextAlignment="Left" IsEnabled="False" TextWrapping="NoWrap" Padding="5"/>
-                        <TextBox VerticalAlignment="Top"  Margin="10,160" Height="50"  FontSize="15" Text="Sasia" TextAlignment="Left" IsEnabled="True" TextWrapping="NoWrap" Padding="5"/>
-                <Button x:Name="button" Content="PAGUAJ" Foreground="White" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Bottom"  MinHeight="70"   FontSize="24" FontWeight="Bold" Click="Button_Click_2">
-                    <Button.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FF959C96" Offset="0"/>
-                            <GradientStop Color="LightGreen" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
-
-
-
-
-
-            </Grid>
-
+            <Label VerticalAlignment="Top"  Content="Username" Foreground="LightSkyBlue"  Margin="199,19,427,0" FontSize="14" FontWeight="Bold" />
+            <Label  Content="STORE NAME"  VerticalAlignment="Center"  HorizontalAlignment="Right" Foreground="LightSkyBlue" Margin="0,19,639,22"  FontSize="16" FontWeight="Bold" />
+            <Label Content="Date" HorizontalAlignment="Left" Margin="379,9,0,0" VerticalAlignment="Top" Width="148" Height="30" Foreground="Red" FontSize="16" FontWeight="Bold"/>
+            <Label Content="Time" HorizontalAlignment="Left" Margin="379,29,0,0" VerticalAlignment="Top" Width="148" Foreground="Red" FontSize="12" FontWeight="Bold"/>
+            <Image HorizontalAlignment="Left" Height="31" Margin="347,19,0,0" VerticalAlignment="Top" Width="32"/>
+            <Image HorizontalAlignment="Left" Height="30" Margin="167,19,0,0" VerticalAlignment="Top" Width="32"/>
+            <TextBox HorizontalAlignment="Left" Height="52" Margin="527,10,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="223"/>
         </Grid>
         <Grid
           Grid.Column="0"
-          Grid.Row="3"
-          HorizontalAlignment="Stretch">
+          HorizontalAlignment="Stretch" Margin="0,407,0,0">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 
-                    <GradientStop Color="#FF959C96" Offset="1"/>
-                    <GradientStop Color="LightGray" Offset="0"/>
+                    <GradientStop Color="#FF959C96" Offset="0"/>
+                    <GradientStop Color="AliceBlue" Offset="0"/>
+
+
+
                 </LinearGradientBrush>
             </Grid.Background>
 
 
-
-            <Label>Njoftime</Label>
-
-
+            <Button Content="F1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0" Click="Button_Click_4"/>
+            <Button Content="F2" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F3" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F4" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F5" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F6" HorizontalAlignment="Left" Margin="100,40,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F7" HorizontalAlignment="Left" Margin="190,40,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F8" HorizontalAlignment="Left" Margin="280,40,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F9" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F10" HorizontalAlignment="Left" Margin="100,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F11" HorizontalAlignment="Left" Margin="190,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <Button Content="F12" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
+            <TextBlock HorizontalAlignment="Left" Margin="518,30,0,0" TextWrapping="Wrap" Text="Totali  pa zbritje:" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="0.67,0.877" Width="95" />
+            <TextBlock HorizontalAlignment="Left" Margin="393,10,0,0" TextWrapping="Wrap" Text="Klienti:" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="0.507,0.564" />
+            <TextBlock HorizontalAlignment="Left" Margin="559,51,0,0" TextWrapping="Wrap" Text="   Zbritje:" VerticalAlignment="Top" Foreground="Black" Width="54" />
+            <TextBlock HorizontalAlignment="Left" Margin="568,72,0,0" TextWrapping="Wrap" Text="  Totali:" VerticalAlignment="Top" Foreground="Black" Width="45" />
+            <TextBox HorizontalAlignment="Left" Height="21" Margin="613,29,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="70"/>
+            <TextBox HorizontalAlignment="Left" Height="21" Margin="613,50,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="70"/>
+            <TextBox HorizontalAlignment="Left" Height="19" Margin="613,71,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0,0"/>
+            <TextBox HorizontalAlignment="Left" Height="20" Margin="433,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" TextChanged="TextBox_TextChanged_3"/>
 
         </Grid>
+        <DataGrid x:Name = "dataGrid" AlternatingRowBackground = "White"  ColumnWidth="*"  AlternationCount = "2" AutoGenerateColumns = "True" MinWidth="600" HorizontalAlignment="Stretch" SelectionChanged="DataGrid_SelectionChanged_2" Margin="0,72,0,102">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header = "Shifra" Binding = "{Binding Shifra}"  MinWidth="80"/>
+                <DataGridTextColumn Header = "Emri" Binding = "{Binding Emri}"  MinWidth="280" />
+                <DataGridTextColumn Header = "Njesia" Binding = "{Binding Njesia}" MinWidth="50" />
+                <DataGridTextColumn Header = "Sasia" Binding = "{Binding Sasia}"  MinWidth="50" />
+                <DataGridTextColumn Header = "Cmimi me TVSH" Binding = "{Binding Cmimi_me_TVSH}" MinWidth="100" />
+                <DataGridTextColumn Header = "Zbritje" Binding = "{Binding Zbritje}"  MinWidth="50" />
+                <DataGridTextColumn Header = "Totali" Binding = "{Binding Totali}" MinWidth="100" />
+            </DataGrid.Columns>
+
+        </DataGrid>
 
     </Grid>
 
