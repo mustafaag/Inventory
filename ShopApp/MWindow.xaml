@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:ShopApp"
         mc:Ignorable="d"
         Title="Shop Application" MinHeight="650" Background="#FF959C96" Foreground="White" MinWidth="1000">
-    <Grid> <!--MAIN GRID -->
+    <Grid>
+        <!--MAIN GRID -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -59,15 +60,15 @@
                     <Label  Content="Username"  VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="LightSkyBlue"  FontSize="16" FontWeight="Bold" />
                 </Grid>
                 <Grid 
-                     Grid.Column="2"
+                     Grid.Column="1"
                     Grid.Row="0"
                     VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
+                    HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Margin="180,10,10,-10"
                     >
                     <!--Grid 3 column in  FIrst rowww -->
 
-                    <Label Content="Date" HorizontalAlignment="Center"  VerticalAlignment="Top" Padding="0,10" Width="148" Foreground="Red" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Time" HorizontalAlignment="Center" VerticalAlignment="Center" Width="148"  Padding="0,20" Foreground="Red" FontSize="12" FontWeight="Bold"/>
+                    <Label Content="Date" HorizontalAlignment="Center"  VerticalAlignment="Top" Padding="0,10" Width="148" Foreground="Red" FontSize="16" FontWeight="Bold" Margin="21,-9,21,0"/>
+                    <Label Content="Time" HorizontalAlignment="Center" VerticalAlignment="Center" Width="148"  Padding="0,20" Foreground="Red" FontSize="12" FontWeight="Bold" Margin="21,0,21,16"/>
                 </Grid>
                 <Grid 
                      Grid.Column="3"
@@ -77,19 +78,19 @@
                     >
                     <!--Grid 4 column in  FIrst rowww -->
 
-                    <TextBox HorizontalAlignment="Left" Height="52" Margin="0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Center" MinWidth="223"/>
+                    <TextBox HorizontalAlignment="Right" Height="52" Margin="-43,10,10,10" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Center" MinWidth="223" Width="180" FontSize="35"/>
                 </Grid>
             </Grid>
             <!--<Image HorizontalAlignment="Left" Height="31" Margin="347,19,0,0" VerticalAlignment="Top" Width="32"/>
             <Image HorizontalAlignment="Left" Height="30" Margin="167,19,0,0" VerticalAlignment="Top" Width="32"/>-->
-           
+
         </Grid>
         <Grid
             Grid.Column="0"
             Grid.Row="1"
             VerticalAlignment="Stretch" Margin="0" >
             <!-- second rowww -->
-            <DataGrid x:Name = "dataGrid" AlternatingRowBackground = "White"  ColumnWidth="*"  AlternationCount = "2" AutoGenerateColumns = "True" MinWidth="600" HorizontalAlignment="Stretch" SelectionChanged="DataGrid_SelectionChanged_2" Margin="0">
+            <DataGrid x:Name = "dataGrid" AlternatingRowBackground = "White"  ColumnWidth="*"  AlternationCount = "2" AutoGenerateColumns = "True" MinWidth="600" HorizontalAlignment="Stretch" SelectionChanged="DataGrid_SelectionChanged_2" Margin="0,0,0,19">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header = "Shifra" Binding = "{Binding Shifra}"  MinWidth="80"/>
                     <DataGridTextColumn Header = "Emri" Binding = "{Binding Emri}"  MinWidth="280" />
@@ -103,10 +104,11 @@
         </Grid>
         <Grid
             Grid.Column="0"
-            Grid.Row="3"
+            Grid.Row="2"
             VerticalAlignment="Stretch" Margin="0" >
+
             <!-- third  rowww -->
-            <Grid>
+            <Grid Margin="0,-20,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -247,7 +249,26 @@
                         </Grid>
                     </Grid>
                 </Grid>
+                <Grid Grid.Column="1" HorizontalAlignment="Stretch" Height="92" Grid.RowSpan="3" VerticalAlignment="Stretch" Width="380">
+                    
+                        <TextBlock HorizontalAlignment="Left" Margin="7,3,0,0" TextWrapping="Wrap" Text="Klienti:" VerticalAlignment="Top" RenderTransformOrigin="1.214,0" Height="24" FontSize="12" Foreground="Black" />
+                        <TextBox HorizontalAlignment="Left" Height="22" Margin="50,1,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188"/>
+                    
+                   
+                        <TextBlock HorizontalAlignment="Left" Margin="7,25,0,0" TextWrapping="Wrap" Text="Totali pa zbritje:" VerticalAlignment="Top" Width="90"  Foreground="Black"/>
+                        <TextBox HorizontalAlignment="Left" Height="19" Margin="125,25,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="113" TextChanged="TextBox_TextChanged_4"/>
+                    
+                    
+                        <TextBlock HorizontalAlignment="Left" Margin="7,48,0,22" TextWrapping="Wrap" Text="Zbritje:" Foreground="Black"/>
+                        <TextBox HorizontalAlignment="Left" Height="20" Margin="124,46,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="114"/>
+                 
+                    
+                        <TextBlock HorizontalAlignment="Left" Margin="7,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Totali:" Foreground="Black" RenderTransformOrigin="0.488,-0.564"/>
+                        <TextBox HorizontalAlignment="Left" Height="20" Margin="124,68,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="114" TextChanged="TextBox_TextChanged_5"/>
+                    <CheckBox Content="Printer fiskal" HorizontalAlignment="Right" Margin="0,27,22,0" VerticalAlignment="Top"/>
+                    <CheckBox Content="Printer i thjeshte" HorizontalAlignment="Right" Margin="0,46,0,0" VerticalAlignment="Top"/>
 
+                </Grid>
             </Grid>
 
         </Grid>
