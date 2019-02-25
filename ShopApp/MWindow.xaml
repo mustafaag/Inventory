@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopApp"
         mc:Ignorable="d"
-        Title="Shop Application" MinHeight="650" Background="#FF959C96" Foreground="White" MinWidth="1000">
+        Title="Inventory Application" MinHeight="650" Background="#FF959C96" Foreground="White" MinWidth="1000">
     <Grid>
         <!--MAIN GRID -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
+           
         </Grid.RowDefinitions>
         <Grid 
           Grid.Column="0"
@@ -28,290 +28,16 @@
                     <GradientStop Color="AliceBlue" Offset="0"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Grid>
-                <!--Grid inside FIrst rowww -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid 
-                     Grid.Column="0"
-                    Grid.Row="0"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    >
-                    <!--Grid 1 column in  FIrst rowww -->
-
-                    <Label  Content="STORE NAME"  VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="LightSkyBlue"  FontSize="16" FontWeight="Bold" />
-                </Grid>
-                <Grid 
-                     Grid.Column="1"
-                    Grid.Row="0"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    >
-                    <!--Grid 2 column in  FIrst rowww -->
-
-                    <Label  Content="Username"  VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="LightSkyBlue"  FontSize="16" FontWeight="Bold" />
-                </Grid>
-                <Grid 
-                     Grid.Column="1"
-                    Grid.Row="0"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Margin="180,10,10,-10"
-                    >
-                    <!--Grid 3 column in  FIrst rowww -->
-
-                    <Label Content="Date" HorizontalAlignment="Center"  VerticalAlignment="Top" Padding="0,10" Width="148" Foreground="Red" FontSize="16" FontWeight="Bold" Margin="21,-9,21,0"/>
-                    <Label Content="Time" HorizontalAlignment="Center" VerticalAlignment="Center" Width="148"  Padding="0,20" Foreground="Red" FontSize="12" FontWeight="Bold" Margin="21,0,21,16"/>
-                </Grid>
-                <Grid 
-                     Grid.Column="3"
-                    Grid.Row="0"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    >
-                    <!--Grid 4 column in  FIrst rowww -->
-
-                    <TextBox HorizontalAlignment="Right" Height="52" Margin="-43,10,10,10" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Center" MinWidth="223" Width="180" FontSize="35"/>
-                </Grid>
-            </Grid>
-            <!--<Image HorizontalAlignment="Left" Height="31" Margin="347,19,0,0" VerticalAlignment="Top" Width="32"/>
-            <Image HorizontalAlignment="Left" Height="30" Margin="167,19,0,0" VerticalAlignment="Top" Width="32"/>-->
-
+         
         </Grid>
         <Grid
             Grid.Column="0"
             Grid.Row="1"
             VerticalAlignment="Stretch" Margin="0" >
             <!-- second rowww -->
-            <DataGrid x:Name = "dataGrid" AlternatingRowBackground = "White"  ColumnWidth="*"  AlternationCount = "2" AutoGenerateColumns = "True" MinWidth="600" HorizontalAlignment="Stretch" SelectionChanged="DataGrid_SelectionChanged_2" Margin="0,0,0,19">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header = "Shifra" Binding = "{Binding Shifra}"  MinWidth="80"/>
-                    <DataGridTextColumn Header = "Emri" Binding = "{Binding Emri}"  MinWidth="280" />
-                    <DataGridTextColumn Header = "Njesia" Binding = "{Binding Njesia}" MinWidth="50" />
-                    <DataGridTextColumn Header = "Sasia" Binding = "{Binding Sasia}"  MinWidth="50" />
-                    <DataGridTextColumn Header = "Cmimi me TVSH" Binding = "{Binding Cmimi_me_TVSH}" MinWidth="100" />
-                    <DataGridTextColumn Header = "Zbritje" Binding = "{Binding Zbritje}"  MinWidth="50" />
-                    <DataGridTextColumn Header = "Totali" Binding = "{Binding Totali}" MinWidth="100" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-        <Grid
-            Grid.Column="0"
-            Grid.Row="2"
-            VerticalAlignment="Stretch" Margin="0" >
-
-            <!-- third  rowww -->
-            <Grid Margin="0,-20,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <!-- Grid inside third row  rowww -->
-                <Grid
-                  Grid.Column="0"
-                    Grid.Row="0"
-                  HorizontalAlignment="Stretch" Background="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-
-                        </Grid.RowDefinitions>
-                        <Grid
-                          Grid.Column="0"
-                            Grid.Row="0"
-                          HorizontalAlignment="Stretch" 
-                            Background="White"
-                            >
-                            <Button Content="F1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                          Grid.Column="1"
-                            Grid.Row="0"
-                          HorizontalAlignment="Stretch" Background="White">
-                            <Button Content="F2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1"   RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                      Grid.Column="2"
-                        Grid.Row="0"
-                      HorizontalAlignment="Stretch" Background="White">
-                            <Button Content="F3" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                      Grid.Column="3"
-                        Grid.Row="0"
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
-                            <Button Content="F3" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Grid
-                  Grid.Column="0"
-                    Grid.Row="1"
-                  HorizontalAlignment="Stretch" Background="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-
-                        </Grid.RowDefinitions>
-                        <Grid
-                          Grid.Column="0"
-                            Grid.Row="0"
-                          HorizontalAlignment="Stretch" 
-                            Background="White"
-                            VerticalAlignment="Stretch"
-                            >
-                            <Button Content="F1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1,0"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                          Grid.Column="1"
-                            Grid.Row="0"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
-                            <Button Content="F2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1,0"   RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                      Grid.Column="2"
-                        Grid.Row="0"
-                      HorizontalAlignment="Stretch" Background="White" VerticalAlignment="Stretch">
-                            <Button Content="F3" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1,0"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                      Grid.Column="3"
-                        Grid.Row="0"
-                      HorizontalAlignment="Stretch" Background="White" VerticalAlignment="Stretch">
-                            <Button Content="F3" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1,0"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Grid
-                  Grid.Column="0"
-                    Grid.Row="2"
-                  HorizontalAlignment="Stretch" Background="White">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-
-                        </Grid.RowDefinitions>
-                        <Grid
-                          Grid.Column="0"
-                            Grid.Row="0"
-                          HorizontalAlignment="Stretch" 
-                            Background="White"
-                            >
-                            <Button Content="F1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                          Grid.Column="1"
-                            Grid.Row="0"
-                          HorizontalAlignment="Stretch" Background="White">
-                            <Button Content="F2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1"   RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                      Grid.Column="2"
-                        Grid.Row="0"
-                      HorizontalAlignment="Stretch" Background="White">
-                            <Button Content="F3" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                        <Grid
-                      Grid.Column="3"
-                        Grid.Row="0"
-                      HorizontalAlignment="Stretch" Background="White">
-                            <Button Content="F3" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="1"  RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Grid Grid.Column="1" HorizontalAlignment="Stretch" Height="92" Grid.RowSpan="3" VerticalAlignment="Stretch" Width="380">
-                    
-                        <TextBlock HorizontalAlignment="Left" Margin="7,3,0,0" TextWrapping="Wrap" Text="Klienti:" VerticalAlignment="Top" RenderTransformOrigin="1.214,0" Height="24" FontSize="12" Foreground="Black" />
-                        <TextBox HorizontalAlignment="Left" Height="22" Margin="50,1,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188"/>
-                    
-                   
-                        <TextBlock HorizontalAlignment="Left" Margin="7,25,0,0" TextWrapping="Wrap" Text="Totali pa zbritje:" VerticalAlignment="Top" Width="90"  Foreground="Black"/>
-                        <TextBox HorizontalAlignment="Left" Height="19" Margin="125,25,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="113" TextChanged="TextBox_TextChanged_4"/>
-                    
-                    
-                        <TextBlock HorizontalAlignment="Left" Margin="7,48,0,22" TextWrapping="Wrap" Text="Zbritje:" Foreground="Black"/>
-                        <TextBox HorizontalAlignment="Left" Height="20" Margin="124,46,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="114"/>
-                 
-                    
-                        <TextBlock HorizontalAlignment="Left" Margin="7,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Totali:" Foreground="Black" RenderTransformOrigin="0.488,-0.564"/>
-                        <TextBox HorizontalAlignment="Left" Height="20" Margin="124,68,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="114" TextChanged="TextBox_TextChanged_5"/>
-                    <CheckBox Content="Printer fiskal" HorizontalAlignment="Right" Margin="0,27,22,0" VerticalAlignment="Top"/>
-                    <CheckBox Content="Printer i thjeshte" HorizontalAlignment="Right" Margin="0,46,0,0" VerticalAlignment="Top"/>
-
-                </Grid>
-            </Grid>
-
-        </Grid>
-
-        <!--<Grid
-          Grid.Column="0"
-          HorizontalAlignment="Stretch" Margin="0,407,0,0">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-
-                    <GradientStop Color="#FF959C96" Offset="0"/>
-                    <GradientStop Color="AliceBlue" Offset="0"/>
-
-
-
-                </LinearGradientBrush>
-            </Grid.Background>
-
-
-            <Button Content="F1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0" Click="Button_Click_4"/>
-            <Button Content="F2" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F3" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F4" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F5" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F6" HorizontalAlignment="Left" Margin="100,40,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F7" HorizontalAlignment="Left" Margin="190,40,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F8" HorizontalAlignment="Left" Margin="280,40,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F9" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F10" HorizontalAlignment="Left" Margin="100,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F11" HorizontalAlignment="Left" Margin="190,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <Button Content="F12" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0,0"/>
-            <TextBlock HorizontalAlignment="Left" Margin="518,30,0,0" TextWrapping="Wrap" Text="Totali  pa zbritje:" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="0.67,0.877" Width="95" />
-            <TextBlock HorizontalAlignment="Left" Margin="393,10,0,0" TextWrapping="Wrap" Text="Klienti:" VerticalAlignment="Top" Foreground="Black" RenderTransformOrigin="0.507,0.564" />
-            <TextBlock HorizontalAlignment="Left" Margin="559,51,0,0" TextWrapping="Wrap" Text="   Zbritje:" VerticalAlignment="Top" Foreground="Black" Width="54" />
-            <TextBlock HorizontalAlignment="Left" Margin="568,72,0,0" TextWrapping="Wrap" Text="  Totali:" VerticalAlignment="Top" Foreground="Black" Width="45" />
-            <TextBox HorizontalAlignment="Left" Height="21" Margin="613,29,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="70"/>
-            <TextBox HorizontalAlignment="Left" Height="21" Margin="613,50,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="70"/>
-            <TextBox HorizontalAlignment="Left" Height="19" Margin="613,71,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0,0"/>
-            <TextBox HorizontalAlignment="Left" Height="20" Margin="433,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" TextChanged="TextBox_TextChanged_3"/>
-
-        </Grid>
         
--->
+        </Grid>
+
     </Grid>
 
 </Window>

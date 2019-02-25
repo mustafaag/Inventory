@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:ShopApp"
              StartupUri="MWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="FontAwesome" TargetType="TextBox">
+            <Setter Property="TextElement.FontFamily" Value="/Digital_Clock;Component/Fonts/#DS-Digital"/>
+        </Style>
+
     </Application.Resources>
 </Application>
