@@ -5,39 +5,133 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopApp"
         mc:Ignorable="d"
+           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Inventory Application" MinHeight="650" Background="#FF959C96" Foreground="White" MinWidth="1000">
-    <Grid>
-        <!--MAIN GRID -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="6*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-           
-        </Grid.RowDefinitions>
-        <Grid 
-          Grid.Column="0"
-          Grid.Row="0"
-          VerticalAlignment="Stretch" Margin="0" 
-         >
-            <!--FIrst rowww-->
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF959C96" Offset="0"/>
-                    <GradientStop Color="AliceBlue" Offset="0"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-         
+    <Window.Resources >
+        <Storyboard x:Key="OpenMenu" >
+            <DoubleAnimationUsingKeyFrames  Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"  Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="#FFDEDEDE">
+        <Grid x:Name="GridMain" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Width="auto"/>
+        <Grid Height="50" VerticalAlignment="Top" Background="#FF5C99D6">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
+            </Grid.Effect>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Usename" VerticalAlignment="Center" FontSize="16"/>
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
+                    <StackPanel Width="150">
+                        <Button Content="Change Password"/>
+                   
+                        <Separator/>
+                        <Button Content="Logout"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">BUSINESS DOCTOR</TextBlock>
         </Grid>
-        <Grid
-            Grid.Column="0"
-            Grid.Row="1"
-            VerticalAlignment="Stretch" Margin="0" >
-            <!-- second rowww -->
-        
-        </Grid>
+        <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#FF31577E">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
+            </Grid.Effect>
+            <StackPanel>
+                <Grid Height="50" Background="White" RenderTransformOrigin="0.5,0.5">
+                    <!--<Image Height="80" VerticalAlignment="Bottom"/>-->
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+                    <Button x:Name="ButtonOpenMenu" Height="50" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
+                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="50" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
+                    </Button>
 
+                </Grid>
+                <ListView x:Name="ListViewMenu" Foreground="#FFB9D2EC" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
+                    <ListViewItem x:Name="Raports" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="GoogleSpreadsheet" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Raporte" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Transfers" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Transfer" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Levizje Artikujsh" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Ticket" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Receptura" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Work" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="WORKFOLWs Artikuj-Reparts" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Sitemap" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Artikuj(+services)" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Forklift" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Nengrupe Artikujsh" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="TapeMeasure" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Njesi Mates" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PlayProtectedContent" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Reparte Prodhimi" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Factory" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Magazina" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                   
+                </ListView>
+            </StackPanel>
+        </Grid>
     </Grid>
-
 </Window>
+
+
+
