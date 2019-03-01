@@ -37,12 +37,12 @@ namespace ShopApp
             param[1] = new SqlParameter("@upass", this.txtPassword.Password);
 
             MsSqlDataAccess msAcc = new MsSqlDataAccess(Utility.ConnStr);
-            dt = MsSqlDataAccess.GetDataTable("select UserId,Username,UserPass,UserRFID,Allow from tblUsersAccess where Username=@uname and UserPass=@upass", CommandType.Text, param);
+            dt = MsSqlDataAccess.GetDataTable("select User_Id,username,First_Name,Last_Name,Password,User_Type, Deleted, Active, Date_Created, Created_By from users where Username=@uname and Password=@upass", CommandType.Text, param);
 
             if (dt.Rows.Count > 0)
             {
                 Utility.UserId = dt.Rows[0][0].ToString();
-                Utility.UserIdAccess = Convert.ToBoolean(dt.Rows[0][4].ToString());
+                Utility.UserIdAccess = Convert.ToBoolean(dt.Rows[0][7].ToString());
 
             }
             else
