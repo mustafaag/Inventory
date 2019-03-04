@@ -1,0 +1,31 @@
+﻿<Window x:Class="ShopApp.AddRepart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopApp"
+        mc:Ignorable="d"
+          Title="Add Depot" Height="auto" Width="500" HorizontalAlignment="Center" Background="#2e3137" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:InventoryDataSet x:Key="inventoryDataSet"/>
+        <CollectionViewSource x:Key="depotsViewSource" Source="{Binding Depots, Source={StaticResource inventoryDataSet}}"/>
+    </Window.Resources>
+    <Border Margin="20" Background="White">
+
+
+        <StackPanel Margin="20" DataContext="{StaticResource depotsViewSource}"     >
+            <Label Content="Add Repart" Foreground="#2e3137" FontSize="30" HorizontalAlignment="Center" FontWeight="Medium" />
+            <Separator/>
+            <Label  Foreground="#2e3137" FontSize="20" Margin="20">Name:</Label>
+            <TextBox Name="txtRepartName" Background="#545d5a" Foreground="White" FontSize="20" Margin="30 0"></TextBox>
+            <Label  Foreground="#2e3137" FontSize="20" Margin="10">Desc</Label>
+            <TextBox Name="txtRepartDesc"   Background="#545d5a" Foreground="White" FontSize="20" Margin="30 0 30 0"></TextBox>
+            <Label  Foreground="#2e3137" FontSize="20" Margin="10">Depot Name</Label>
+            <ComboBox Margin="30 10" DisplayMemberPath="Depot_Name" ItemsSource="{Binding}" Name="cmbxDepotId" SelectedValuePath="Depot_ID">
+
+            </ComboBox>
+            <Button Name="bntSubmit"  Content="Save" Click="BntSubmit_Click" Background="#545d5a" Height="50" Foreground="White" FontSize="25" Margin="30 0" />
+
+        </StackPanel>
+    </Border>
+</Window>

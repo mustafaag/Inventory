@@ -30,13 +30,13 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="#FFDEDEDE">
-        <Grid x:Name="GridMain" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Width="auto"/>
+        <Grid x:Name="GridMain" HorizontalAlignment="Stretch" Margin="200 70 10 70" VerticalAlignment="Stretch"  Width="auto"/>
         <Grid Height="50" VerticalAlignment="Top" Background="#FF5C99D6">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Usename" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock Text="Usename" Name="txtUsername"  VerticalAlignment="Center" FontSize="16"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
                         <Button Content="Change Password"/>
@@ -108,6 +108,12 @@
                             <TextBlock Text="Nengrupe Artikujsh" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem Height="60" x:Name="Groups">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Forklift" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Grupe Artikujsh" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="TapeMeasure" Height="25" Width="25" Margin="10"/>
@@ -120,7 +126,7 @@
                             <TextBlock Text="Reparte Prodhimi" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" x:Name="Depot">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Factory" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Magazina" VerticalAlignment="Center"  Margin="20 10"/>

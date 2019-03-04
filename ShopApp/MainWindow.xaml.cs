@@ -42,13 +42,14 @@ namespace ShopApp
             if (dt.Rows.Count > 0)
             {
                 Utility.UserId = dt.Rows[0][0].ToString();
+                Utility.UserName = dt.Rows[0][1].ToString();
                 Utility.UserIdAccess = Convert.ToBoolean(dt.Rows[0][7].ToString());
 
             }
             else
             {
                 Utility.UserIdAccess = false;
-                MessageBox.Show("Mund te jete perdoruesi ose parolla keq apo qasje te jete e ndaluar", "Info");
+                MessageBox.Show("Wrong Password", "Info");
             }
 
             if (Utility.UserIdAccess)

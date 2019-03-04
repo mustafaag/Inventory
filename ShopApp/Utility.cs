@@ -10,6 +10,7 @@ namespace ShopApp
     {
         public static string ConnStr;
         public static string PcName;
+        public static string UserName;
         public static string PcIpAddress;
         public static string UserBranchId;
         public static string PcBranchId;

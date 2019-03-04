@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="ShopApp.RepartControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShopApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <local:InventoryDataSet x:Key="inventoryDataSet"/>
+        <CollectionViewSource x:Key="repartsViewSource" Source="{Binding Reparts, Source={StaticResource inventoryDataSet}}"/>
+    </UserControl.Resources>
+    <StackPanel>
+        <Button Width="60" HorizontalAlignment="Left" Background="LightGreen" Click="Button_Click">Add</Button>
+        <Grid DataContext="{StaticResource repartsViewSource}">
+            <DataGrid x:Name="repartsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="repart_IdColumn" Binding="{Binding Repart_Id}" Header="Repart Id" IsReadOnly="True" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="repart_NameColumn" Binding="{Binding Repart_name}" Header="Repart Name" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="repart_DescColumn" Binding="{Binding Repart_desc}" Header="Repart Desc" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="depot_IdColumn" Binding="{Binding Depot_Id}" Header="Depot" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="created_ByColumn" Binding="{Binding Created_By}" Header="Created By" Width="SizeToHeader"/>
+                    <DataGridTemplateColumn x:Name="created_DateColumn" Header="Created Date" Width="SizeToHeader">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding Created_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+    </StackPanel>
+</UserControl>

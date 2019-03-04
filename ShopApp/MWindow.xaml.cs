@@ -22,6 +22,7 @@ namespace ShopApp
         public MWindow()
         {
             InitializeComponent();
+            txtUsername.Text = Utility.UserName;
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -102,12 +103,14 @@ namespace ShopApp
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
+           
         }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
+            
         }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -118,16 +121,27 @@ namespace ShopApp
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "Raports":
-                    usc = new RaporteControl();
-                    GridMain.Children.Add(usc);
+                    usc = new RepartControl();
+             
                     break;
                 case "ItemCreate":
                     usc = new UserControlCreate();
-                    GridMain.Children.Add(usc);
+                  
+                    break;
+                case "Groups":
+                    usc = new GroupsControl();
+          
+                    break;
+                case "Depot":
+                    usc = new DepotControl();
                     break;
                 default:
+                    usc = new DepotControl();
                     break;
+
+                   
             }
+            GridMain.Children.Add(usc);
         }
     }
 }
