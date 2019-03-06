@@ -102,7 +102,7 @@
                             <TextBlock Text="Artikuj(+services)" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" x:Name="SubGroups">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Forklift" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Nengrupe Artikujsh" VerticalAlignment="Center"  Margin="20 10"/>
@@ -114,14 +114,14 @@
                             <TextBlock Text="Grupe Artikujsh" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" x:Name="Measures">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="TapeMeasure" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Njesi Mates" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
+                    <ListViewItem Height="60" x:Name="Reparte">
+                        <StackPanel Orientation="Horizontal" >
                             <materialDesign:PackIcon Kind="PlayProtectedContent" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Reparte Prodhimi" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>

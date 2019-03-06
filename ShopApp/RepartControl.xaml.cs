@@ -42,11 +42,11 @@ namespace ShopApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddRepart addRepart = new AddRepart();
+            AddRepart addRepart = new AddRepart(this);
             addRepart.Show();
         }
 
-        private void LoadData()
+        public void LoadData()
         {
             try
             {

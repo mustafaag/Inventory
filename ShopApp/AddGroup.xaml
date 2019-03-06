@@ -5,17 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopApp"
         mc:Ignorable="d"
-        Title="Add Group" Height="auto" Width="500" HorizontalAlignment="Center" Background="#2e3137">
+        Title="Add Group" Height="auto" Width="500" HorizontalAlignment="Center" Background="#2e3137" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:InventoryDataSet x:Key="inventoryDataSet"/>
+        <CollectionViewSource x:Key="repartsViewSource" Source="{Binding Reparts, Source={StaticResource inventoryDataSet}}"/>
+    </Window.Resources>
     <Border Margin="20" Background="White">
 
 
-        <StackPanel Margin="20"     >
+        <StackPanel Margin="20" DataContext="{StaticResource repartsViewSource}"     >
             <Label Content="Add Group" Foreground="#2e3137" FontSize="30" HorizontalAlignment="Center" FontWeight="Medium" />
             <Separator/>
             <Label  Foreground="#2e3137" FontSize="20" Margin="20">Group Name:</Label>
             <TextBox Name="txtGroupName" Background="#545d5a" Foreground="White" FontSize="25" Margin="30 0"></TextBox>
             <Label  Foreground="#2e3137" FontSize="20" Margin="20">Group Desc</Label>
             <TextBox Name="txtGroupDesc"   Background="#545d5a" Foreground="White" FontSize="25" Margin="30 0 30 20"></TextBox>
+            <ComboBox Margin="30 10" DisplayMemberPath="Repart_Name" ItemsSource="{Binding}" Name="cmbxRepartId" SelectedValuePath="Repart_Id"></ComboBox>
             <Button Name="bntSubmit"  Content="Save" Click="BntSubmit_Click" Background="#545d5a" Height="50" Foreground="White" FontSize="25" Margin="30 0" />
 
         </StackPanel>

@@ -23,22 +23,21 @@ namespace ShopApp
 
             // Do not load your data at design time.
             LoadData();
-
-
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddDepot addDepot = new AddDepot();
+            AddDepot addDepot = new AddDepot(this);
             addDepot.Show();
         }
 
 
-        private void LoadData()
+        public void LoadData()
         {
             try
             {
-                string query = @"select  Depot_Name,Depot_Desc,Address,Created_Date,u.Username as Created_By from Depots d 
+                string query = @"select Depot_ID, Depot_Name,Depot_Desc,Address,Created_Date,u.Username as Created_By from Depots d 
                 inner join Users u on u.User_ID = d.Created_By";
                 using (SqlConnection con = new SqlConnection(Utility.ConnStr))
                 {

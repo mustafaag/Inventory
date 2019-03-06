@@ -11,9 +11,11 @@ namespace ShopApp
     /// </summary>
     public partial class AddDepot : Window
     {
-        public AddDepot()
+        DepotControl _Depot;
+        public AddDepot(DepotControl d)
         {
             InitializeComponent();
+            _Depot = d;
         }
 
         private void BntSubmit_Click(object sender, RoutedEventArgs e)
@@ -28,7 +30,11 @@ namespace ShopApp
                 string query = String.Format("Insert into Depots(Depot_Name,Depot_desc,Address,Created_by) values('{0}','{1}','{2}',{3})", depotName, depotDesc, depotAddr, userId);
                 int count = dbcnn.Execute(query, commandType: CommandType.Text);
                 if (count > 0)
+                {
                     MessageBox.Show("Depot was succesfully Added", "Success!");
+                    _Depot.LoadData();
+                }
+                    
             }
             catch (Exception ex)
             {

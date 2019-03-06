@@ -22,9 +22,11 @@ namespace ShopApp
     /// </summary>
     public partial class AddRepart : Window
     {
-        public AddRepart()
+        RepartControl _Repart;
+        public AddRepart(RepartControl repart)
         {
             InitializeComponent();
+            _Repart = repart;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -50,7 +52,11 @@ namespace ShopApp
                 string query = String.Format("Insert into reparts(Repart_Name,Repart_Desc,Depot_Id,Created_by) values('{0}','{1}','{2}',{3})", repartName, repartDesc, depotId, userId);
                 int count = dbcnn.Execute(query, commandType: CommandType.Text);
                 if (count > 0)
+                {
                     MessageBox.Show("Repart was succesfully Added", "Success!");
+                    _Repart.LoadData();
+                }
+                   
             }
             catch (Exception ex)
             {

@@ -12,14 +12,27 @@
         <CollectionViewSource x:Key="groupsViewSource" Source="{Binding Groups, Source={StaticResource inventoryDataSet}}"/>
     </UserControl.Resources>
 
-    <StackPanel>
-        <Button Width="60" HorizontalAlignment="Left" Background="LightGreen" Click="Button_Click">Add </Button>
-        <Grid  DataContext="{StaticResource groupsViewSource}" >
-
-            <DataGrid ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        </Grid>
+    <StackPanel DataContext="{StaticResource groupsViewSource}">
+        <Button Width="60" HorizontalAlignment="Left" Background="LightGreen" Click="Button_Click">Add</Button>
+        <Grid  DataContext="{StaticResource groupsViewSource}" />
+        <DataGrid x:Name="groupsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="group_IDColumn" Binding="{Binding Group_ID}" Header="Group ID" IsReadOnly="True" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="group_NameColumn" Binding="{Binding Group_Name}" Header="Group Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="group_descColumn" Binding="{Binding Group_desc}" Header="Group Decription" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="date_CreatedColumn" Header="Date Created" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date_Created, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="created_ByColumn" Binding="{Binding Created_By}" Header="Created By" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="RepartColumn" Binding="{Binding Reparti}" Header="Repart"  Width="auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>
-      
- 
-   
+
+
+
 </UserControl>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopApp"
         mc:Ignorable="d"
-          Title="Add Depot" Height="auto" Width="500" HorizontalAlignment="Center" Background="#2e3137" Loaded="Window_Loaded">
+          Title="Add Repart" Height="auto" Width="500" HorizontalAlignment="Center" Background="#2e3137" Loaded="Window_Loaded">
     <Window.Resources>
         <local:InventoryDataSet x:Key="inventoryDataSet"/>
         <CollectionViewSource x:Key="depotsViewSource" Source="{Binding Depots, Source={StaticResource inventoryDataSet}}"/>

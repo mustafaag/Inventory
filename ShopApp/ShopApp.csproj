@@ -71,6 +71,9 @@
     <Compile Include="AddGroup.xaml.cs">
       <DependentUpon>AddGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddMeasure.xaml.cs">
+      <DependentUpon>AddMeasure.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddRepart.xaml.cs">
       <DependentUpon>AddRepart.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InventoryDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MeasureControl.xaml.cs">
+      <DependentUpon>MeasureControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MWindow.xaml.cs">
       <DependentUpon>MWindow.xaml</DependentUpon>
     </Compile>
@@ -93,6 +99,9 @@
     </Compile>
     <Compile Include="RepartControl.xaml.cs">
       <DependentUpon>RepartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubGroupControl.xaml.cs">
+      <DependentUpon>SubGroupControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlCreate.xaml.cs">
       <DependentUpon>UserControlCreate.xaml</DependentUpon>
@@ -106,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddMeasure.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +148,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MeasureControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RepartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubGroupControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

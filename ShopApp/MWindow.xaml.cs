@@ -120,28 +120,36 @@ namespace ShopApp
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
-                case "Raports":
+                case "Reparte":
                     usc = new RepartControl();
-             
+                    GridMain.Children.Add(usc);
                     break;
                 case "ItemCreate":
                     usc = new UserControlCreate();
-                  
+                    GridMain.Children.Add(usc);
                     break;
                 case "Groups":
                     usc = new GroupsControl();
-          
+                    GridMain.Children.Add(usc);
                     break;
                 case "Depot":
                     usc = new DepotControl();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "Measures":
+                    usc = new Measure();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "SubGroups":
+                    usc = new SubGroupControl();
+                    GridMain.Children.Add(usc);
                     break;
                 default:
-                    usc = new DepotControl();
                     break;
 
                    
             }
-            GridMain.Children.Add(usc);
+            
         }
     }
 }

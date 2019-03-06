@@ -18,49 +18,54 @@ using System.Windows.Shapes;
 namespace ShopApp
 {
     /// <summary>
-    /// Interaction logic for GroupsControl.xaml
+    /// Interaction logic for Measure.xaml
     /// </summary>
-    public partial class GroupsControl : UserControl
+    public partial class Measure : UserControl
     {
-        public GroupsControl()
+        public Measure()
         {
             InitializeComponent();
+
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
-            LoadData();
-        }
-
-        public void LoadData()
-        {
-            try
+            // Do not load your data at design time.
+            if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
             {
-                string query = @"select Group_ID,Group_Name,Group_desc, g.Date_Created, u.Username as Created_By, r.Repart_Name as Reparti from groups g
-                    inner join Users u on u.User_ID = g.Created_By
-                    inner join Reparts r on r.Repart_Id = g.Created_By";
-                using (SqlConnection con = new SqlConnection(Utility.ConnStr))
-                {
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable("Groups");
-                    sda.Fill(dt);
-                    groupsDataGrid.ItemsSource = dt.DefaultView;
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
+                //Load your data here and assign the result to the CollectionViewSource.
+                LoadData();
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddGroup addGroup = new AddGroup(this);
-            addGroup.Show();
+            AddMeasure measure = new AddMeasure(this);
+            measure.Show();
+        }
+
+        public void LoadData()
+        {
+           
+            try
+            {
+                string query = @"select Njesia_ID,Njesia_Desc,Njesia_Name,u.Username as Created_By,Created_Date from Njesite n 
+                inner join Users u on u.User_ID = n.Created_By";
+                using (SqlConnection con = new SqlConnection(Utility.ConnStr))
+                {
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable("Njesite");
+                    sda.Fill(dt);
+                    njesiteDataGrid.ItemsSource = dt.DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }
