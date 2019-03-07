@@ -9,26 +9,29 @@
     <UserControl.Resources>
         <local:InventoryDataSet x:Key="inventoryDataSet"/>
         <CollectionViewSource x:Key="subGroupsViewSource" Source="{Binding SubGroups, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="groupsViewSource" Source="{Binding Groups, Source={StaticResource inventoryDataSet}}"/>
     </UserControl.Resources>
-    <StackPanel>
-    <Grid DataContext="{StaticResource subGroupsViewSource}">
-        <DataGrid x:Name="subGroupsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="subGroup_IDColumn" Binding="{Binding SubGroup_ID}" Header="Sub Group ID" IsReadOnly="True" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="subGroup_NameColumn" Binding="{Binding SubGroup_Name}" Header="Sub Group Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="subGroup_DescColumn" Binding="{Binding SubGroup_Desc}" Header="Sub Group Desc" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="group_IDColumn" Binding="{Binding Group_ID}" Header="Group ID" Width="SizeToHeader"/>
-                <DataGridTemplateColumn x:Name="date_CreatedColumn" Header="Date Created" Width="SizeToHeader">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Date_Created, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="created_ByColumn" Binding="{Binding Created_By}" Header="Created By" Width="SizeToHeader"/>
-            </DataGrid.Columns>
-        </DataGrid>
+    <StackPanel DataContext="{StaticResource groupsViewSource}">
+        <Button Width="60" HorizontalAlignment="Left" Background="LightGreen" Click="Button_Click">Add</Button>
+        <Label Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100 -30 0 10">Group:</Label>
+        <ComboBox  Width="200" Foreground="Black" SelectionChanged="CmbxGroupId_SelectionChanged"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300 -35 0 0" Name="cmbxGroupId" DisplayMemberPath="Group_Name" ItemsSource="{Binding}" SelectedValuePath="Group_ID" ></ComboBox>
+        <Grid DataContext="{StaticResource subGroupsViewSource}">
+            <DataGrid x:Name="subGroupsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="subGroup_IDColumn" Binding="{Binding SubGroup_ID}" Header="Sub Group ID" IsReadOnly="True" Width="auto"/>
+                    <DataGridTextColumn x:Name="subGroup_NameColumn" Binding="{Binding SubGroup_Name}" Header="Sub Group Name" Width="auto"/>
+                    <DataGridTextColumn x:Name="subGroup_DescColumn" Binding="{Binding SubGroup_Desc}" Header="Sub Group Desc" Width="auto"/>
+                    <DataGridTemplateColumn x:Name="date_CreatedColumn" Header="Date Created" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding Date_Created, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn x:Name="created_ByColumn" Binding="{Binding Created_By}" Header="Created By" Width="SizeToHeader"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-    </Grid>
+        </Grid>
     </StackPanel>
 </UserControl>
