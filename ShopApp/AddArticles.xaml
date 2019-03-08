@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopApp"
         mc:Ignorable="d"
-        Title="AddArticles" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+       Title="Add Depot" Height="700" Width="500" HorizontalAlignment="Center" Background="#2e3137" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:InventoryDataSet x:Key="inventoryDataSet"/>
+        <CollectionViewSource x:Key="njesiteViewSource" Source="{Binding Njesite, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="groupsViewSource" Source="{Binding Groups, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="subGroupsViewSource" Source="{Binding SubGroups, Source={StaticResource inventoryDataSet}}"/>
+    </Window.Resources>
+    <Border Margin="20" Background="White">
+
+
+        <StackPanel Margin="20" DataContext="{StaticResource njesiteViewSource}"     >
+            <Label Content="Add Article" Foreground="#2e3137" FontSize="30" HorizontalAlignment="Center" FontWeight="Medium" />
+            <Separator/>
+            <Label  Foreground="#2e3137" FontSize="15" Margin="10">Name:</Label>
+            <TextBox Name="txtArticleName" Background="#545d5a" Foreground="White" FontSize="15" Margin="30 0"></TextBox>
+            <Label  Foreground="#2e3137" FontSize="15" Margin="10">Comments:</Label>
+            <TextBox Name="txtArticleDesc"   Background="#545d5a" Foreground="White" FontSize="15" Margin="30 0 30 0"></TextBox>
+            <Label  Foreground="#2e3137" FontSize="15" Margin="10">Cost</Label>
+            <TextBox Name="txtCost"   Background="#545d5a" Foreground="White" FontSize="15" Margin="30 0 30 10"></TextBox>
+            <ComboBox Name="cmbxNjesiId" Margin="30 10" DisplayMemberPath="Njesia_Name" ItemsSource="{Binding}" SelectedValuePath="Njesia_ID" ></ComboBox>
+            <ComboBox Name="cmbxGroupId" Margin="30 10" DisplayMemberPath="Group_Name" ItemsSource="{Binding Source={StaticResource groupsViewSource}}" SelectedValuePath="Group_ID"></ComboBox>
+            <ComboBox Name="cmbxSubGroupId" Margin="30 10" DisplayMemberPath="SubGroup_Name" ItemsSource="{Binding Source={StaticResource subGroupsViewSource}}" SelectedValuePath="SubGroup_ID" ></ComboBox>
+            <Button Name="bntSubmit"  Content="Save" Click="BntSubmit_Click" Background="#545d5a" Height="50" Foreground="White" FontSize="25" Margin="30 0" />
+
+        </StackPanel>
+    </Border>
 </Window>
