@@ -144,6 +144,12 @@ namespace ShopApp
                     usc = new SubGroupControl();
                     GridMain.Children.Add(usc);
                     break;
+                case "Articles":
+                    usc = new ArticlesControl();
+                    GridMain.Children.Add(usc);
+                    break;
+
+                    
                 default:
                     break;
 

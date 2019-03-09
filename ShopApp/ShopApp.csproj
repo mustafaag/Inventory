@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddArticles.xaml.cs">
+      <DependentUpon>AddArticles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddDepot.xaml.cs">
       <DependentUpon>AddDepot.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,12 @@
     </Compile>
     <Compile Include="AddRepart.xaml.cs">
       <DependentUpon>AddRepart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddSubGroup.xaml.cs">
+      <DependentUpon>AddSubGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ArticlesControl.xaml.cs">
+      <DependentUpon>ArticlesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="DepotControl.xaml.cs">
       <DependentUpon>DepotControl.xaml</DependentUpon>
@@ -110,6 +119,10 @@
       <DependentUpon>UserControlHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
+    <Page Include="AddArticles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddDepot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +136,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddRepart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddSubGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ArticlesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

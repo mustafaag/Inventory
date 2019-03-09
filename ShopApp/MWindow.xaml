@@ -96,7 +96,7 @@
                             <TextBlock Text="WORKFOLWs Artikuj-Reparts" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" x:Name="Articles">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Sitemap" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Artikuj(+services)" VerticalAlignment="Center"  Margin="20 10"/>

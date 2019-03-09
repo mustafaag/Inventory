@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ShopApp.ArticlesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShopApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <local:InventoryDataSet x:Key="inventoryDataSet"/>
+        <CollectionViewSource x:Key="productsViewSource" Source="{Binding Products, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="subGroupsViewSource" Source="{Binding SubGroups, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="groupsViewSource" Source="{Binding Groups, Source={StaticResource inventoryDataSet}}"/>
+    </UserControl.Resources>
+    <StackPanel DataContext="{StaticResource subGroupsViewSource}">
+        <Button Width="60" HorizontalAlignment="Left" Background="LightGreen" Click="Button_Click">Add</Button>
+        <Label Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100 -30 0 10">Group:</Label>
+        <ComboBox  Width="200" Foreground="Black"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200 -35 0 0" Name="cmbxGroupId" DisplayMemberPath="Group_Name" SelectionChanged="CmbxGroupId_SelectionChanged" ItemsSource="{Binding Source={StaticResource groupsViewSource}}" SelectedValuePath="Group_ID" ></ComboBox>
+        <Label Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="420 -30 0 0">Sub Group:</Label>
+        <ComboBox  Width="200" Foreground="Black"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="500 -35 0 0" Name="cmbxSubGroupId"  SelectionChanged="CmbxSubGroupId_SelectionChanged" DisplayMemberPath="SubGroup_Name" ItemsSource="{Binding}" SelectedValuePath="SubGroup_Id" ></ComboBox>
+        <Grid DataContext="{StaticResource productsViewSource}">
+            <DataGrid x:Name="productsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="product_IDColumn" Binding="{Binding Product_ID}" Header="Product ID" IsReadOnly="True" Width="auto"/>
+                    <DataGridTextColumn x:Name="product_NameColumn" Binding="{Binding Product_Name}" Header="Article" IsReadOnly="True" Width="auto"/>
+                    <DataGridTextColumn x:Name="product_DescColumn" Binding="{Binding Product_Desc}" Header="Comment" IsReadOnly="True" Width="auto"/>
+            
+                    <DataGridTextColumn x:Name="priceColumn" Binding="{Binding Price}" Header="Cost" Width="auto" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="njesia_IDColumn" Binding="{Binding Njesia}" Header="Njesia" Width="auto" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </StackPanel>
+</UserControl>
