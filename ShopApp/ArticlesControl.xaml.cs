@@ -62,7 +62,7 @@ namespace ShopApp
             string groupId = cmbxGroupId.SelectedValue.ToString();
 
             string query = string.Format(@"select Product_ID,Product_Name,Product_Desc,n.Njesia_Name as Njesia ,Price	 from Products p
-            inner join Njesite n on n.Njesia_ID = p.Njesia_ID where group_Id = {0} and sub_group_id = {1}", groupId,subGroupId);
+            inner join Njesite n on n.Njesia_ID = p.Njesia_ID where  sub_group_id = {0}", subGroupId);
 
             using (SqlConnection con = new SqlConnection(Utility.ConnStr))
             {

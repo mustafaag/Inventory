@@ -1,0 +1,32 @@
+﻿<Window x:Class="ShopApp.AddWorkFlows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopApp"
+        mc:Ignorable="d"
+       Title="Add Repart" Height="600" Width="500" HorizontalAlignment="Center" Background="#2e3137" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:InventoryDataSet x:Key="inventoryDataSet"/>
+        <CollectionViewSource x:Key="productsViewSource" Source="{Binding Products, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="statusViewSource" Source="{Binding Status, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="repartsViewSource" Source="{Binding Reparts, Source={StaticResource inventoryDataSet}}"/>
+    </Window.Resources>
+
+    <Border Margin="20" Background="White">
+        <StackPanel Margin="20" DataContext="{StaticResource productsViewSource}">
+            <Label Content="Add Repart" Foreground="#2e3137" FontSize="30" HorizontalAlignment="Center" FontWeight="Medium" />
+            <Separator/>
+            <Label  Foreground="#2e3137" FontSize="15" Margin="30 10">Article:</Label>
+            <ComboBox Margin="30 0" DisplayMemberPath="Product_Name" Name="cmbxProductId" ItemsSource="{Binding}" SelectedValuePath="Product_ID"></ComboBox>
+            <Label  Foreground="#2e3137" FontSize="15" Margin="30 10">Status</Label>
+            <ComboBox Margin="30 0" DisplayMemberPath="Status_Name" Name="cmbxStatusId" ItemsSource="{Binding Source={StaticResource statusViewSource}}" SelectedValuePath="Status_Id"></ComboBox>
+            <Label  Foreground="#2e3137" FontSize="15" Margin="30 10">Repart</Label>
+            <ComboBox Margin="30 0" DisplayMemberPath="Repart_Name" Name="cmbxRepartId" ItemsSource="{Binding Source={StaticResource repartsViewSource}}" SelectedValuePath="Repart_Id"></ComboBox>
+            <Label  Foreground="#2e3137" FontSize="15" Margin="30 10">Comments</Label>
+            <TextBox Name="txtComments"   Background="#545d5a" Foreground="White" FontSize="20" Margin="30 0 30 30"></TextBox>
+            <Button Name="bntSubmit"  Content="Save" Click="BntSubmit_Click" Background="#545d5a" Height="50" Foreground="White" FontSize="25" Margin="30 0" />
+
+        </StackPanel>
+    </Border>
+</Window>

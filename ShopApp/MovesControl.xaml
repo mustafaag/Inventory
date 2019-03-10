@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="ShopApp.MovesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShopApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <local:InventoryDataSet x:Key="inventoryDataSet"/>
+        <CollectionViewSource x:Key="transactionsViewSource" Source="{Binding Transactions, Source={StaticResource inventoryDataSet}}"/>
+    </UserControl.Resources>
+    <StackPanel Background="White">
+        <Label HorizontalAlignment="Left">Data:</Label>
+        <DatePicker Width="100" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="100 -20 0 0" Foreground="Black" HorizontalAlignment="Left" ></DatePicker>
+        <Label HorizontalAlignment="Left"  Margin="200 -30 0 0">NR:</Label>
+        <TextBox   Name="txtTransferId" HorizontalAlignment="Left" Width="100" Foreground="Black"  Margin="250 -30 0 0" ></TextBox>
+        <Label HorizontalAlignment="Left"  Margin="400 -25 0 0">Totali </Label>
+        <Label HorizontalAlignment="Left"  Margin="450 -25 0 0" Name="txtTotal">0</Label>
+        <Button Width="100" Margin="0 -25 0 0" HorizontalAlignment="Right" Background="LightGreen" Click="Button_Click">Add</Button>
+        <Grid DataContext="{StaticResource transactionsViewSource}">
+        <DataGrid x:Name="transactionsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" IsReadOnly="True" Width="Auto"/>
+                <DataGridTemplateColumn x:Name="dateCreatedColumn" Header="Date Created" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DateCreated, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="repIdFromColumn" Binding="{Binding RepIdFrom}" Header="Rep  From" Width="Auto"/>
+                <DataGridTextColumn x:Name="repIdToColumn" Binding="{Binding RepIdTo}" Header="Rep  To" Width="Auto"/>
+                <DataGridTextColumn x:Name="depotIdFromColumn" Binding="{Binding DepotIdFrom}" Header="Magazine From" Width="Auto"/>
+                <DataGridTextColumn x:Name="depotIdToColumn" Binding="{Binding DepotIdTo}" Header="Magazine To" Width="Auto"/>
+                <DataGridTextColumn x:Name="productIdColumn" Binding="{Binding ProductId}" Header="Article" Width="Auto"/>
+                <DataGridTextColumn x:Name="njesiaIdColumn" Binding="{Binding NjesiaId}" Header="Unit" Width="Auto"/>
+                <DataGridTextColumn x:Name="quantityColumn" Binding="{Binding Quantity}" Header="Quantity" Width="Auto"/>
+                <DataGridTextColumn x:Name="costPerUnitColumn" Binding="{Binding CostPerUnit}" Header="Cost/Unit" Width="Auto"/>
+                <DataGridTextColumn x:Name="productCostColumn" Binding="{Binding ProductCost}" Header="Product Cost" Width="Auto"/>
+                <DataGridTextColumn x:Name="productMoveCostColumn" Binding="{Binding ProductMoveCost}" Header="Total " Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+    </StackPanel>
+</UserControl>

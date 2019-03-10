@@ -55,16 +55,16 @@ namespace ShopApp
             string articleName = txtArticleName.Text;
             string articleDesc = txtArticleDesc.Text;
             string cost = txtCost.Text;
-            string groupId = cmbxGroupId.SelectedValue.ToString();
+            
             string subGroupId = cmbxSubGroupId.SelectedValue.ToString();
             string measureId = cmbxNjesiId.SelectedValue.ToString();
-
+            
             string userId = Utility.UserId.ToString();
             try
             {
                 IDbConnection dbcnn = new SqlConnection(Utility.ConnStr);
-                string query = String.Format(@"Insert into Products ( Product_Name,Product_Desc,Created_By,Sub_Group_ID,Price ,Njesia_ID,Group_Id) values('{0}' ,'{1}',{2},{3},{4},{5},{6})"
-                ,articleName,articleDesc,userId,subGroupId,cost,measureId,groupId);
+                string query = String.Format(@"Insert into Products ( Product_Name,Product_Desc,Created_By,Sub_Group_ID,Price ,Njesia_ID) values('{0}' ,'{1}',{2},{3},{4},{5})"
+                ,articleName,articleDesc,userId,subGroupId,cost,measureId);
 
                 int count = dbcnn.Execute(query, commandType: CommandType.Text);
                 if (count > 0)

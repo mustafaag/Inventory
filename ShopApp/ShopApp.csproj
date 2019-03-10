@@ -83,6 +83,12 @@
     <Compile Include="AddSubGroup.xaml.cs">
       <DependentUpon>AddSubGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTransfer.xaml.cs">
+      <DependentUpon>AddTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddWorkFlows.xaml.cs">
+      <DependentUpon>AddWorkFlows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ArticlesControl.xaml.cs">
       <DependentUpon>ArticlesControl.xaml</DependentUpon>
     </Compile>
@@ -100,11 +106,17 @@
     <Compile Include="MeasureControl.xaml.cs">
       <DependentUpon>MeasureControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MovesControl.xaml.cs">
+      <DependentUpon>MovesControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MWindow.xaml.cs">
       <DependentUpon>MWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RaporteControl.xaml.cs">
       <DependentUpon>RaporteControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RecepturaControl.xaml.cs">
+      <DependentUpon>RecepturaControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="RepartControl.xaml.cs">
       <DependentUpon>RepartControl.xaml</DependentUpon>
@@ -119,6 +131,9 @@
       <DependentUpon>UserControlHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
+    <Compile Include="WorkFlowControl.xaml.cs">
+      <DependentUpon>WorkFlowControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddArticles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +155,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddSubGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTransfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWorkFlows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -173,11 +196,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MovesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RaporteControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RecepturaControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkFlowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

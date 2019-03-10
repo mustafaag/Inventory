@@ -15,12 +15,12 @@
         <Grid DataContext="{StaticResource repartsViewSource}">
             <DataGrid x:Name="repartsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="repart_IdColumn" Binding="{Binding Repart_Id}" Header="Repart Id" IsReadOnly="True" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="repart_NameColumn" Binding="{Binding Repart_name}" Header="Repart Name" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="repart_DescColumn" Binding="{Binding Repart_desc}" Header="Repart Desc" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="depot_IdColumn" Binding="{Binding Depot_Id}" Header="Depot" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="created_ByColumn" Binding="{Binding Created_By}" Header="Created By" Width="SizeToHeader"/>
-                    <DataGridTemplateColumn x:Name="created_DateColumn" Header="Created Date" Width="SizeToHeader">
+                    <DataGridTextColumn x:Name="repart_IdColumn" Binding="{Binding Repart_Id}" Header="Repart Id" IsReadOnly="True" Width="auto"/>
+                    <DataGridTextColumn x:Name="repart_NameColumn" Binding="{Binding Repart_name}" Header="Repart Name" Width="auto"/>
+                    <DataGridTextColumn x:Name="repart_DescColumn" Binding="{Binding Repart_desc}" Header="Repart Desc" Width="auto"/>
+                    <DataGridTextColumn x:Name="depot_IdColumn" Binding="{Binding Depot_Id}" Header="Depot" Width="auto"/>
+                    <DataGridTextColumn x:Name="created_ByColumn" Binding="{Binding Created_By}" Header="Created By" Width="auto"/>
+                    <DataGridTemplateColumn x:Name="created_DateColumn" Header="Created Date" Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <DatePicker SelectedDate="{Binding Created_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>

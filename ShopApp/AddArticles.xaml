@@ -25,7 +25,6 @@
             <Label  Foreground="#2e3137" FontSize="15" Margin="10">Cost</Label>
             <TextBox Name="txtCost"   Background="#545d5a" Foreground="White" FontSize="15" Margin="30 0 30 10"></TextBox>
             <ComboBox Name="cmbxNjesiId" Margin="30 10" DisplayMemberPath="Njesia_Name" ItemsSource="{Binding}" SelectedValuePath="Njesia_ID" ></ComboBox>
-            <ComboBox Name="cmbxGroupId" Margin="30 10" DisplayMemberPath="Group_Name" ItemsSource="{Binding Source={StaticResource groupsViewSource}}" SelectedValuePath="Group_ID"></ComboBox>
             <ComboBox Name="cmbxSubGroupId" Margin="30 10" DisplayMemberPath="SubGroup_Name" ItemsSource="{Binding Source={StaticResource subGroupsViewSource}}" SelectedValuePath="SubGroup_ID" ></ComboBox>
             <Button Name="bntSubmit"  Content="Save" Click="BntSubmit_Click" Background="#545d5a" Height="50" Foreground="White" FontSize="25" Margin="30 0" />
 

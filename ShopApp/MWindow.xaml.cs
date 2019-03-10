@@ -148,8 +148,18 @@ namespace ShopApp
                     usc = new ArticlesControl();
                     GridMain.Children.Add(usc);
                     break;
-
-                    
+                case "Workflow":
+                    usc = new WorkFlowControl();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "Receptura":
+                    usc = new RecepturaControl();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "Transfers":
+                    usc = new MovesControl();
+                    GridMain.Children.Add(usc);
+                    break;
                 default:
                     break;
 
