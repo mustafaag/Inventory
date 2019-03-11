@@ -15,7 +15,7 @@
 
 
         <StackPanel Margin="20" DataContext="{StaticResource groupsViewSource}"     >
-            <Label Content="Add Group" Foreground="#2e3137" FontSize="30" HorizontalAlignment="Center" FontWeight="Medium" />
+            <Label Content="Add Sub Group" Foreground="#2e3137" FontSize="30" HorizontalAlignment="Center" FontWeight="Medium" />
             <Separator/>
             <Label  Foreground="#2e3137" FontSize="20" Margin="20">Sub Group Name:</Label>
             <TextBox Name="txtSGroupName" Background="#545d5a" Foreground="White" FontSize="25" Margin="30 0"></TextBox>

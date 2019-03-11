@@ -3727,6 +3727,8 @@ namespace ShopApp {
             
             private global::System.Data.DataColumn columnProductMoveCost;
             
+            private global::System.Data.DataColumn columnComments;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public TransactionsDataTable() {
@@ -3858,6 +3860,14 @@ namespace ShopApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CommentsColumn {
+                get {
+                    return this.columnComments;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3893,7 +3903,7 @@ namespace ShopApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TransactionsRow AddTransactionsRow(System.DateTime DateCreated, int RepIdFrom, int RepIdTo, int DepotIdFrom, int DepotIdTo, int ProductId, int NjesiaId, decimal Quantity, decimal CostPerUnit, decimal ProductCost, decimal ProductMoveCost) {
+            public TransactionsRow AddTransactionsRow(System.DateTime DateCreated, int RepIdFrom, int RepIdTo, int DepotIdFrom, int DepotIdTo, int ProductId, int NjesiaId, decimal Quantity, decimal CostPerUnit, decimal ProductCost, decimal ProductMoveCost, string Comments) {
                 TransactionsRow rowTransactionsRow = ((TransactionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3907,7 +3917,8 @@ namespace ShopApp {
                         Quantity,
                         CostPerUnit,
                         ProductCost,
-                        ProductMoveCost};
+                        ProductMoveCost,
+                        Comments};
                 rowTransactionsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTransactionsRow);
                 return rowTransactionsRow;
@@ -3949,6 +3960,7 @@ namespace ShopApp {
                 this.columnCostPerUnit = base.Columns["CostPerUnit"];
                 this.columnProductCost = base.Columns["ProductCost"];
                 this.columnProductMoveCost = base.Columns["ProductMoveCost"];
+                this.columnComments = base.Columns["Comments"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3978,6 +3990,8 @@ namespace ShopApp {
                 base.Columns.Add(this.columnProductCost);
                 this.columnProductMoveCost = new global::System.Data.DataColumn("ProductMoveCost", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProductMoveCost);
+                this.columnComments = new global::System.Data.DataColumn("Comments", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComments);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -3986,6 +4000,7 @@ namespace ShopApp {
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
+                this.columnComments.MaxLength = 150;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5886,6 +5901,22 @@ namespace ShopApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Comments {
+                get {
+                    try {
+                        return ((string)(this[this.tableTransactions.CommentsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Comments\' in table \'Transactions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTransactions.CommentsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsDateCreatedNull() {
                 return this.IsNull(this.tableTransactions.DateCreatedColumn);
             }
@@ -6014,6 +6045,18 @@ namespace ShopApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetProductMoveCostNull() {
                 this[this.tableTransactions.ProductMoveCostColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCommentsNull() {
+                return this.IsNull(this.tableTransactions.CommentsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCommentsNull() {
+                this[this.tableTransactions.CommentsColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10944,10 +10987,11 @@ SELECT Status_Id, Status_Name, Status_Desc FROM Status WHERE (Status_Id = @Statu
             tableMapping.ColumnMappings.Add("CostPerUnit", "CostPerUnit");
             tableMapping.ColumnMappings.Add("ProductCost", "ProductCost");
             tableMapping.ColumnMappings.Add("ProductMoveCost", "ProductMoveCost");
+            tableMapping.ColumnMappings.Add("Comments", "Comments");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Transactions] WHERE (([ID] = @Original_ID) AND ((@IsNull_DateCreated = 1 AND [DateCreated] IS NULL) OR ([DateCreated] = @Original_DateCreated)) AND ((@IsNull_RepIdFrom = 1 AND [RepIdFrom] IS NULL) OR ([RepIdFrom] = @Original_RepIdFrom)) AND ((@IsNull_RepIdTo = 1 AND [RepIdTo] IS NULL) OR ([RepIdTo] = @Original_RepIdTo)) AND ((@IsNull_DepotIdFrom = 1 AND [DepotIdFrom] IS NULL) OR ([DepotIdFrom] = @Original_DepotIdFrom)) AND ((@IsNull_DepotIdTo = 1 AND [DepotIdTo] IS NULL) OR ([DepotIdTo] = @Original_DepotIdTo)) AND ((@IsNull_ProductId = 1 AND [ProductId] IS NULL) OR ([ProductId] = @Original_ProductId)) AND ((@IsNull_NjesiaId = 1 AND [NjesiaId] IS NULL) OR ([NjesiaId] = @Original_NjesiaId)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_CostPerUnit = 1 AND [CostPerUnit] IS NULL) OR ([CostPerUnit] = @Original_CostPerUnit)) AND ((@IsNull_ProductCost = 1 AND [ProductCost] IS NULL) OR ([ProductCost] = @Original_ProductCost)) AND ((@IsNull_ProductMoveCost = 1 AND [ProductMoveCost] IS NULL) OR ([ProductMoveCost] = @Original_ProductMoveCost)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Transactions] WHERE (([ID] = @Original_ID) AND ((@IsNull_DateCreated = 1 AND [DateCreated] IS NULL) OR ([DateCreated] = @Original_DateCreated)) AND ((@IsNull_RepIdFrom = 1 AND [RepIdFrom] IS NULL) OR ([RepIdFrom] = @Original_RepIdFrom)) AND ((@IsNull_RepIdTo = 1 AND [RepIdTo] IS NULL) OR ([RepIdTo] = @Original_RepIdTo)) AND ((@IsNull_DepotIdFrom = 1 AND [DepotIdFrom] IS NULL) OR ([DepotIdFrom] = @Original_DepotIdFrom)) AND ((@IsNull_DepotIdTo = 1 AND [DepotIdTo] IS NULL) OR ([DepotIdTo] = @Original_DepotIdTo)) AND ((@IsNull_ProductId = 1 AND [ProductId] IS NULL) OR ([ProductId] = @Original_ProductId)) AND ((@IsNull_NjesiaId = 1 AND [NjesiaId] IS NULL) OR ([NjesiaId] = @Original_NjesiaId)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_CostPerUnit = 1 AND [CostPerUnit] IS NULL) OR ([CostPerUnit] = @Original_CostPerUnit)) AND ((@IsNull_ProductCost = 1 AND [ProductCost] IS NULL) OR ([ProductCost] = @Original_ProductCost)) AND ((@IsNull_ProductMoveCost = 1 AND [ProductMoveCost] IS NULL) OR ([ProductMoveCost] = @Original_ProductMoveCost)) AND ((@IsNull_Comments = 1 AND [Comments] IS NULL) OR ([Comments] = @Original_Comments)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateCreated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -10972,10 +11016,12 @@ SELECT Status_Id, Status_Name, Status_Desc FROM Status WHERE (Status_Id = @Statu
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductCost", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ProductCost", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductMoveCost", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductMoveCost", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductMoveCost", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ProductMoveCost", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Comments", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Comments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Transactions] ([DateCreated], [RepIdFrom], [RepIdTo], [DepotIdFrom], [DepotIdTo], [ProductId], [NjesiaId], [Quantity], [CostPerUnit], [ProductCost], [ProductMoveCost]) VALUES (@DateCreated, @RepIdFrom, @RepIdTo, @DepotIdFrom, @DepotIdTo, @ProductId, @NjesiaId, @Quantity, @CostPerUnit, @ProductCost, @ProductMoveCost);
-SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, NjesiaId, Quantity, CostPerUnit, ProductCost, ProductMoveCost FROM Transactions WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Transactions] ([DateCreated], [RepIdFrom], [RepIdTo], [DepotIdFrom], [DepotIdTo], [ProductId], [NjesiaId], [Quantity], [CostPerUnit], [ProductCost], [ProductMoveCost], [Comments]) VALUES (@DateCreated, @RepIdFrom, @RepIdTo, @DepotIdFrom, @DepotIdTo, @ProductId, @NjesiaId, @Quantity, @CostPerUnit, @ProductCost, @ProductMoveCost, @Comments);
+SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, NjesiaId, Quantity, CostPerUnit, ProductCost, ProductMoveCost, Comments FROM Transactions WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RepIdFrom", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RepIdFrom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10988,29 +11034,31 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CostPerUnit", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "CostPerUnit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductCost", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ProductCost", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductMoveCost", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ProductMoveCost", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Comments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Transactions] SET [DateCreated] = @DateCreated, [RepIdFrom] = @RepI" +
-                "dFrom, [RepIdTo] = @RepIdTo, [DepotIdFrom] = @DepotIdFrom, [DepotIdTo] = @DepotI" +
-                "dTo, [ProductId] = @ProductId, [NjesiaId] = @NjesiaId, [Quantity] = @Quantity, [" +
-                "CostPerUnit] = @CostPerUnit, [ProductCost] = @ProductCost, [ProductMoveCost] = @" +
-                "ProductMoveCost WHERE (([ID] = @Original_ID) AND ((@IsNull_DateCreated = 1 AND [" +
-                "DateCreated] IS NULL) OR ([DateCreated] = @Original_DateCreated)) AND ((@IsNull_" +
-                "RepIdFrom = 1 AND [RepIdFrom] IS NULL) OR ([RepIdFrom] = @Original_RepIdFrom)) A" +
-                "ND ((@IsNull_RepIdTo = 1 AND [RepIdTo] IS NULL) OR ([RepIdTo] = @Original_RepIdT" +
-                "o)) AND ((@IsNull_DepotIdFrom = 1 AND [DepotIdFrom] IS NULL) OR ([DepotIdFrom] =" +
-                " @Original_DepotIdFrom)) AND ((@IsNull_DepotIdTo = 1 AND [DepotIdTo] IS NULL) OR" +
-                " ([DepotIdTo] = @Original_DepotIdTo)) AND ((@IsNull_ProductId = 1 AND [ProductId" +
-                "] IS NULL) OR ([ProductId] = @Original_ProductId)) AND ((@IsNull_NjesiaId = 1 AN" +
-                "D [NjesiaId] IS NULL) OR ([NjesiaId] = @Original_NjesiaId)) AND ((@IsNull_Quanti" +
-                "ty = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNu" +
-                "ll_CostPerUnit = 1 AND [CostPerUnit] IS NULL) OR ([CostPerUnit] = @Original_Cost" +
-                "PerUnit)) AND ((@IsNull_ProductCost = 1 AND [ProductCost] IS NULL) OR ([ProductC" +
-                "ost] = @Original_ProductCost)) AND ((@IsNull_ProductMoveCost = 1 AND [ProductMov" +
-                "eCost] IS NULL) OR ([ProductMoveCost] = @Original_ProductMoveCost)));\r\nSELECT ID" +
-                ", DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, NjesiaId, " +
-                "Quantity, CostPerUnit, ProductCost, ProductMoveCost FROM Transactions WHERE (ID " +
-                "= @ID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [Transactions] SET [DateCreated] = @DateCreated, [RepIdFrom] = @RepIdFrom," +
+                " [RepIdTo] = @RepIdTo, [DepotIdFrom] = @DepotIdFrom, [DepotIdTo] = @DepotIdTo, [" +
+                "ProductId] = @ProductId, [NjesiaId] = @NjesiaId, [Quantity] = @Quantity, [CostPe" +
+                "rUnit] = @CostPerUnit, [ProductCost] = @ProductCost, [ProductMoveCost] = @Produc" +
+                "tMoveCost, [Comments] = @Comments WHERE (([ID] = @Original_ID) AND ((@IsNull_Dat" +
+                "eCreated = 1 AND [DateCreated] IS NULL) OR ([DateCreated] = @Original_DateCreate" +
+                "d)) AND ((@IsNull_RepIdFrom = 1 AND [RepIdFrom] IS NULL) OR ([RepIdFrom] = @Orig" +
+                "inal_RepIdFrom)) AND ((@IsNull_RepIdTo = 1 AND [RepIdTo] IS NULL) OR ([RepIdTo] " +
+                "= @Original_RepIdTo)) AND ((@IsNull_DepotIdFrom = 1 AND [DepotIdFrom] IS NULL) O" +
+                "R ([DepotIdFrom] = @Original_DepotIdFrom)) AND ((@IsNull_DepotIdTo = 1 AND [Depo" +
+                "tIdTo] IS NULL) OR ([DepotIdTo] = @Original_DepotIdTo)) AND ((@IsNull_ProductId " +
+                "= 1 AND [ProductId] IS NULL) OR ([ProductId] = @Original_ProductId)) AND ((@IsNu" +
+                "ll_NjesiaId = 1 AND [NjesiaId] IS NULL) OR ([NjesiaId] = @Original_NjesiaId)) AN" +
+                "D ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quan" +
+                "tity)) AND ((@IsNull_CostPerUnit = 1 AND [CostPerUnit] IS NULL) OR ([CostPerUnit" +
+                "] = @Original_CostPerUnit)) AND ((@IsNull_ProductCost = 1 AND [ProductCost] IS N" +
+                "ULL) OR ([ProductCost] = @Original_ProductCost)) AND ((@IsNull_ProductMoveCost =" +
+                " 1 AND [ProductMoveCost] IS NULL) OR ([ProductMoveCost] = @Original_ProductMoveC" +
+                "ost)) AND ((@IsNull_Comments = 1 AND [Comments] IS NULL) OR ([Comments] = @Origi" +
+                "nal_Comments)));\r\nSELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, Depot" +
+                "IdTo, ProductId, NjesiaId, Quantity, CostPerUnit, ProductCost, ProductMoveCost, " +
+                "Comments FROM Transactions WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RepIdFrom", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RepIdFrom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11023,6 +11071,7 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CostPerUnit", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "CostPerUnit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductCost", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ProductCost", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductMoveCost", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ProductMoveCost", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Comments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateCreated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -11046,6 +11095,8 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductCost", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ProductCost", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductMoveCost", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductMoveCost", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductMoveCost", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "ProductMoveCost", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Comments", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Comments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -11063,8 +11114,8 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, Nj" +
-                "esiaId, Quantity, CostPerUnit, ProductCost, ProductMoveCost FROM dbo.Transaction" +
-                "s";
+                "esiaId, Quantity, CostPerUnit, ProductCost, ProductMoveCost, Comments FROM Trans" +
+                "actions";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11125,7 +11176,7 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, global::System.Nullable<global::System.DateTime> Original_DateCreated, global::System.Nullable<int> Original_RepIdFrom, global::System.Nullable<int> Original_RepIdTo, global::System.Nullable<int> Original_DepotIdFrom, global::System.Nullable<int> Original_DepotIdTo, global::System.Nullable<int> Original_ProductId, global::System.Nullable<int> Original_NjesiaId, global::System.Nullable<decimal> Original_Quantity, global::System.Nullable<decimal> Original_CostPerUnit, global::System.Nullable<decimal> Original_ProductCost, global::System.Nullable<decimal> Original_ProductMoveCost) {
+        public virtual int Delete(int Original_ID, global::System.Nullable<global::System.DateTime> Original_DateCreated, global::System.Nullable<int> Original_RepIdFrom, global::System.Nullable<int> Original_RepIdTo, global::System.Nullable<int> Original_DepotIdFrom, global::System.Nullable<int> Original_DepotIdTo, global::System.Nullable<int> Original_ProductId, global::System.Nullable<int> Original_NjesiaId, global::System.Nullable<decimal> Original_Quantity, global::System.Nullable<decimal> Original_CostPerUnit, global::System.Nullable<decimal> Original_ProductCost, global::System.Nullable<decimal> Original_ProductMoveCost, string Original_Comments) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             if ((Original_DateCreated.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -11215,6 +11266,14 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
+            if ((Original_Comments == null)) {
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((string)(Original_Comments));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11235,7 +11294,7 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<global::System.DateTime> DateCreated, global::System.Nullable<int> RepIdFrom, global::System.Nullable<int> RepIdTo, global::System.Nullable<int> DepotIdFrom, global::System.Nullable<int> DepotIdTo, global::System.Nullable<int> ProductId, global::System.Nullable<int> NjesiaId, global::System.Nullable<decimal> Quantity, global::System.Nullable<decimal> CostPerUnit, global::System.Nullable<decimal> ProductCost, global::System.Nullable<decimal> ProductMoveCost) {
+        public virtual int Insert(global::System.Nullable<global::System.DateTime> DateCreated, global::System.Nullable<int> RepIdFrom, global::System.Nullable<int> RepIdTo, global::System.Nullable<int> DepotIdFrom, global::System.Nullable<int> DepotIdTo, global::System.Nullable<int> ProductId, global::System.Nullable<int> NjesiaId, global::System.Nullable<decimal> Quantity, global::System.Nullable<decimal> CostPerUnit, global::System.Nullable<decimal> ProductCost, global::System.Nullable<decimal> ProductMoveCost, string Comments) {
             if ((DateCreated.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(DateCreated.Value));
             }
@@ -11302,6 +11361,12 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
+            if ((Comments == null)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Comments));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11334,6 +11399,7 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
                     global::System.Nullable<decimal> CostPerUnit, 
                     global::System.Nullable<decimal> ProductCost, 
                     global::System.Nullable<decimal> ProductMoveCost, 
+                    string Comments, 
                     int Original_ID, 
                     global::System.Nullable<global::System.DateTime> Original_DateCreated, 
                     global::System.Nullable<int> Original_RepIdFrom, 
@@ -11346,6 +11412,7 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
                     global::System.Nullable<decimal> Original_CostPerUnit, 
                     global::System.Nullable<decimal> Original_ProductCost, 
                     global::System.Nullable<decimal> Original_ProductMoveCost, 
+                    string Original_Comments, 
                     int ID) {
             if ((DateCreated.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(DateCreated.Value));
@@ -11413,96 +11480,110 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_ID));
-            if ((Original_DateCreated.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_DateCreated.Value));
+            if ((Comments == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Comments));
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_ID));
+            if ((Original_DateCreated.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_DateCreated.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_RepIdFrom.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_RepIdFrom.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_RepIdFrom.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_RepIdTo.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_RepIdTo.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_RepIdTo.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             if ((Original_DepotIdFrom.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_DepotIdFrom.Value));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_DepotIdFrom.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             if ((Original_DepotIdTo.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_DepotIdTo.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_DepotIdTo.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             if ((Original_ProductId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Original_ProductId.Value));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_ProductId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             if ((Original_NjesiaId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(Original_NjesiaId.Value));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_NjesiaId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             if ((Original_Quantity.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(Original_Quantity.Value));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(Original_Quantity.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             if ((Original_CostPerUnit.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(Original_CostPerUnit.Value));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((decimal)(Original_CostPerUnit.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             if ((Original_ProductCost.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((decimal)(Original_ProductCost.Value));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(Original_ProductCost.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             if ((Original_ProductMoveCost.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((decimal)(Original_ProductMoveCost.Value));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((decimal)(Original_ProductMoveCost.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(ID));
+            if ((Original_Comments == null)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_Comments));
+            }
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11535,6 +11616,7 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
                     global::System.Nullable<decimal> CostPerUnit, 
                     global::System.Nullable<decimal> ProductCost, 
                     global::System.Nullable<decimal> ProductMoveCost, 
+                    string Comments, 
                     int Original_ID, 
                     global::System.Nullable<global::System.DateTime> Original_DateCreated, 
                     global::System.Nullable<int> Original_RepIdFrom, 
@@ -11546,8 +11628,9 @@ SELECT ID, DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, N
                     global::System.Nullable<decimal> Original_Quantity, 
                     global::System.Nullable<decimal> Original_CostPerUnit, 
                     global::System.Nullable<decimal> Original_ProductCost, 
-                    global::System.Nullable<decimal> Original_ProductMoveCost) {
-            return this.Update(DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, NjesiaId, Quantity, CostPerUnit, ProductCost, ProductMoveCost, Original_ID, Original_DateCreated, Original_RepIdFrom, Original_RepIdTo, Original_DepotIdFrom, Original_DepotIdTo, Original_ProductId, Original_NjesiaId, Original_Quantity, Original_CostPerUnit, Original_ProductCost, Original_ProductMoveCost, Original_ID);
+                    global::System.Nullable<decimal> Original_ProductMoveCost, 
+                    string Original_Comments) {
+            return this.Update(DateCreated, RepIdFrom, RepIdTo, DepotIdFrom, DepotIdTo, ProductId, NjesiaId, Quantity, CostPerUnit, ProductCost, ProductMoveCost, Comments, Original_ID, Original_DateCreated, Original_RepIdFrom, Original_RepIdTo, Original_DepotIdFrom, Original_DepotIdTo, Original_ProductId, Original_NjesiaId, Original_Quantity, Original_CostPerUnit, Original_ProductCost, Original_ProductMoveCost, Original_Comments, Original_ID);
         }
     }
     

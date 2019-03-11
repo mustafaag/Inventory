@@ -5,8 +5,131 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopApp"
         mc:Ignorable="d"
-        Title="AddTransfer" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+       Title="Add Depot" Height="550" Width="700" HorizontalAlignment="Center" Background="#2e3137" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:InventoryDataSet x:Key="inventoryDataSet"/>
+        <CollectionViewSource x:Key="repartsViewSource" Source="{Binding Reparts, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="depotsViewSource" Source="{Binding Depots, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="repartsViewSource1" Source="{Binding Reparts, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="depotsViewSource1" Source="{Binding Depots, Source={StaticResource inventoryDataSet}}"/>
+        <CollectionViewSource x:Key="productsViewSource" Source="{Binding Products, Source={StaticResource inventoryDataSet}}"/>
+    </Window.Resources>
+
+    <Border Margin="20" Background="White">
+        <StackPanel Margin="20">
+
+            <Label Content="Transfer " Foreground="#2e3137" FontSize="30" HorizontalAlignment="Center" FontWeight="Medium" />
+            <Separator/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition  Height="*"/>
+                    <RowDefinition  Height="*"/>
+                    <RowDefinition  Height="*"/>
+                    <RowDefinition  Height="*"/>
+                    <RowDefinition  Height="*"/>
+                    <RowDefinition  Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"
+                  Grid.Column="0"
+                 >
+                    <Label  Foreground="#2e3137" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Reparti Origjine:</Label>
+
+                </Grid>
+                <Grid Grid.Row="1"
+                  Grid.Column="0" DataContext="{StaticResource repartsViewSource}"
+                 >
+                    <ComboBox Name="cmbRepartFrom"  Width="200" HorizontalAlignment="Left" Foreground="Black" FontSize="15" Margin="30 0" DisplayMemberPath="Repart_Name" ItemsSource="{Binding}" SelectedValuePath="Repart_Id"></ComboBox>
+
+                </Grid>
+                <Grid Grid.Row="0"
+                  Grid.Column="1"
+                 >
+                    <Label  Foreground="#2e3137" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Reparti Destinacion:</Label>
+
+                </Grid>
+                <Grid Grid.Row="1"
+                  Grid.Column="1" DataContext="{StaticResource repartsViewSource1}"
+                 >
+                    <ComboBox Name="cmbRepartTo" Width="200" HorizontalAlignment="Left" Foreground="Black" FontSize="15" Margin="30 0" DisplayMemberPath="Repart_Name" ItemsSource="{Binding}" SelectedValuePath="Repart_Id"></ComboBox>
+
+                </Grid>
+
+                <Grid Grid.Row="2"
+                  Grid.Column="0"
+                 >
+                    <Label  Foreground="#2e3137" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Magazina Origjine:</Label>
+
+                </Grid>
+                <Grid Grid.Row="3"
+                  Grid.Column="0" DataContext="{StaticResource depotsViewSource}"
+                 >
+                    <ComboBox Name="cmbDepotFrom"  Width="200" HorizontalAlignment="Left" Foreground="Black" FontSize="15" Margin="30 0" DisplayMemberPath="Depot_Name" ItemsSource="{Binding}" SelectedValuePath="Depot_ID"></ComboBox>
+
+                </Grid>
+                <Grid Grid.Row="2"
+                  Grid.Column="1"
+                 >
+                    <Label  Foreground="#2e3137" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Magazina Destinacion:</Label>
+
+                </Grid>
+                <Grid Grid.Row="3"
+                  Grid.Column="1" DataContext="{StaticResource depotsViewSource1}"
+                 >
+                    <ComboBox Name="cmbMagTo" Width="200" HorizontalAlignment="Left" Foreground="Black" FontSize="15" Margin="30 0" DisplayMemberPath="Depot_Name" ItemsSource="{Binding}" SelectedValuePath="Depot_ID"></ComboBox>
+                </Grid>
+                <Grid Grid.Row="4"
+                  Grid.Column="0"
+                 >
+
+                    <Label  Foreground="#2e3137" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Produkti:</Label>
+                </Grid>
+                <Grid Grid.Row="5"
+                  Grid.Column="0" DataContext="{StaticResource productsViewSource}"
+                 >
+                    <ComboBox Name="cmbProduct" Width="200" HorizontalAlignment="Left" DisplayMemberPath="Product_Name" Foreground="Black" FontSize="15" Margin="30 0" ItemsSource="{Binding}" SelectedValuePath="Product_ID"></ComboBox>
+                 
+         
+
+                </Grid>
+                <Grid Grid.Row="4"
+                  Grid.Column="1"
+                 >
+
+                    <Label  Foreground="#2e3137" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Data:</Label>
+                    <Label  Foreground="#2e3137" FontSize="15" Width="150" HorizontalAlignment="Right" Margin="0 10">Sasia:</Label>
+
+                </Grid>
+                <Grid Grid.Row="5"
+                  Grid.Column="1"
+                 >
+                    <DatePicker Name="dateTransfer"  Width="100" HorizontalAlignment="Left" Foreground="Black" FontSize="15" Margin="30 0"></DatePicker>
+                    <TextBox Name="txtQuantity" Width="100" HorizontalAlignment="Right" Foreground="Black" FontSize="15" Margin="0 0 40 0">0</TextBox>
+                </Grid>
+                <Grid Grid.Row="6"
+                  Grid.Column="0"
+                 >
+                    <Label  Foreground="#2e3137" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Komente:</Label>
+                </Grid>
+                <Grid Grid.Row="6"
+                  Grid.Column="1"
+                 >
+                    <TextBox Name="txtComments"  HorizontalAlignment="Stretch"  ></TextBox>
+                </Grid>
+            </Grid>
+
+            <!--<Label  Foreground="#2e3137" FontSize="15" Margin="10">Comments:</Label>
+            <TextBox Name="txtArticleDesc"   Background="#545d5a" Foreground="White" FontSize="15" Margin="30 0 30 0"></TextBox>
+            <Label  Foreground="#2e3137" FontSize="15" Margin="10">Cost</Label>
+            <TextBox Name="txtCost"   Background="#545d5a" Foreground="White" FontSize="15" Margin="30 0 30 10"></TextBox>
+            <ComboBox Name="cmbxNjesiId" Margin="30 10" DisplayMemberPath="Njesia_Name" ItemsSource="{Binding}" SelectedValuePath="Njesia_ID" ></ComboBox>-->
+
+            <Button Name="bntSubmit"  Content="Save" Click="BntSubmit_Click" Background="#545d5a" Height="50" Foreground="White" FontSize="25" Margin="30 30" />
+
+        </StackPanel>
+    </Border>
 </Window>

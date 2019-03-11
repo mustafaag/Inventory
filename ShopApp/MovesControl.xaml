@@ -17,7 +17,7 @@
         <TextBox   Name="txtTransferId" HorizontalAlignment="Left" Width="100" Foreground="Black"  Margin="250 -30 0 0" ></TextBox>
         <Label HorizontalAlignment="Left"  Margin="400 -25 0 0">Totali </Label>
         <Label HorizontalAlignment="Left"  Margin="450 -25 0 0" Name="txtTotal">0</Label>
-        <Button Width="100" Margin="0 -25 0 0" HorizontalAlignment="Right" Background="LightGreen" Click="Button_Click">Add</Button>
+        <Button Width="100" Margin="0 -25 10 0" HorizontalAlignment="Right" Background="LightGreen" Click="Button_Click">Add</Button>
         <Grid DataContext="{StaticResource transactionsViewSource}">
         <DataGrid x:Name="transactionsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
