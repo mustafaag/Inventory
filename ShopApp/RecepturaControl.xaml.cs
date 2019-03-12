@@ -49,7 +49,18 @@ namespace ShopApp
 
         private void CmbSubGroupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cmbSubGroupId.SelectedIndex ==0) return;
+           
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddRecepture addRecepture = new AddRecepture();
+            addRecepture.Show();
+        }
+
+        private void CmbSubGroupId_DropDownClosed(object sender, System.EventArgs e)
+        {
+           
             string subgroupId = cmbSubGroupId.SelectedValue.ToString();
             string query = string.Format(@"Select Product_ID,Product_Name from Products where Sub_Group_ID={0}", subgroupId);
             using (SqlConnection con = new SqlConnection(Utility.ConnStr))
@@ -60,6 +71,7 @@ namespace ShopApp
                 sda.Fill(dt);
                 cmbxProductMaster.ItemsSource = dt.DefaultView;
             }
+
         }
     }
 }

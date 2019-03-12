@@ -77,6 +77,9 @@
     <Compile Include="AddMeasure.xaml.cs">
       <DependentUpon>AddMeasure.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddRecepture.xaml.cs">
+      <DependentUpon>AddRecepture.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddRepart.xaml.cs">
       <DependentUpon>AddRepart.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddMeasure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddRecepture.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

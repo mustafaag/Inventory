@@ -46,13 +46,13 @@
                 <Label  Foreground="Black"  FontWeight="Bold" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Nengroup:</Label>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="3" DataContext="{StaticResource subGroupsViewSource}"               >
-                <ComboBox Name="cmbSubGroupId"  Foreground="Black" SelectionChanged="CmbSubGroupId_SelectionChanged" DisplayMemberPath="SubGroup_Name" ItemsSource="{Binding}" SelectedValuePath="SubGroup_ID" ></ComboBox>
+                <ComboBox Name="cmbSubGroupId"  Foreground="Black" SelectionChanged="CmbSubGroupId_SelectionChanged" DropDownClosed="CmbSubGroupId_DropDownClosed" DisplayMemberPath="SubGroup_Name" ItemsSource="{Binding}" SelectedValuePath="SubGroup_ID"  SelectedValue="SubGroup_ID"></ComboBox>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="1">
                 <Button Background="Red" Width="120" HorizontalAlignment="Center">Reset</Button>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="1">
-                <Button Background="Green" Width="120" HorizontalAlignment="Center">Add</Button>
+                <Button Background="Green" Width="120" HorizontalAlignment="Center" Click="Button_Click">Add</Button>
             </Grid>
             <Grid Grid.Column="4" Grid.Row="1">
                 <Button Background="LightBlue" Width="100" HorizontalAlignment="Center">Print</Button>
