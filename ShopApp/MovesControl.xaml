@@ -12,12 +12,14 @@
     </UserControl.Resources>
     <StackPanel Background="White">
         <Label HorizontalAlignment="Left">Data:</Label>
-        <DatePicker Width="100" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="100 -20 0 0" Foreground="Black" HorizontalAlignment="Left" ></DatePicker>
+        <DatePicker Width="100" Name="dtpxdateSelected" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="100 -20 0 0" Foreground="Black" HorizontalAlignment="Left" ></DatePicker>
         <Label HorizontalAlignment="Left"  Margin="200 -30 0 0">NR:</Label>
         <TextBox   Name="txtTransferId" HorizontalAlignment="Left" Width="100" Foreground="Black"  Margin="250 -30 0 0" ></TextBox>
-        <Label HorizontalAlignment="Left"  Margin="400 -25 0 0">Totali </Label>
-        <Label HorizontalAlignment="Left"  Margin="450 -25 0 0" Name="txtTotal">0</Label>
-        <Button Width="100" Margin="0 -25 10 0" HorizontalAlignment="Right" Background="LightGreen" Click="Button_Click">Add</Button>
+        <!--<Label HorizontalAlignment="Left"  Margin="400 -25 0 0">Totali </Label>
+        <Label HorizontalAlignment="Left"  Margin="450 -25 0 0" Name="txtTotal">0</Label>-->
+        
+        <Button Width="100" Margin="0 -25 150 0" HorizontalAlignment="Right" Background="LightGreen" Click="Button_Click_1">Filter</Button>
+        <Button Width="100" Margin="0 -35 10 0" HorizontalAlignment="Right" Background="LightGreen" Click="Button_Click">Add</Button>
         <Grid DataContext="{StaticResource transactionsViewSource}">
         <DataGrid x:Name="transactionsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
@@ -29,15 +31,16 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="repIdFromColumn" Binding="{Binding RepIdFrom}" Header="Rep  From" Width="Auto"/>
-                <DataGridTextColumn x:Name="repIdToColumn" Binding="{Binding RepIdTo}" Header="Rep  To" Width="Auto"/>
-                <DataGridTextColumn x:Name="depotIdFromColumn" Binding="{Binding DepotIdFrom}" Header="Magazine From" Width="Auto"/>
-                <DataGridTextColumn x:Name="depotIdToColumn" Binding="{Binding DepotIdTo}" Header="Magazine To" Width="Auto"/>
-                <DataGridTextColumn x:Name="productIdColumn" Binding="{Binding ProductId}" Header="Article" Width="Auto"/>
-                <DataGridTextColumn x:Name="njesiaIdColumn" Binding="{Binding NjesiaId}" Header="Unit" Width="Auto"/>
-                <DataGridTextColumn x:Name="quantityColumn" Binding="{Binding Quantity}" Header="Quantity" Width="Auto"/>
-                <DataGridTextColumn x:Name="costPerUnitColumn" Binding="{Binding CostPerUnit}" Header="Cost/Unit" Width="Auto"/>
-                <DataGridTextColumn x:Name="productCostColumn" Binding="{Binding ProductCost}" Header="Product Cost" Width="Auto"/>
+                    <DataGridTextColumn x:Name="repIdFromColumn" Binding="{Binding RepartFrom}" Header="Repart From" Width="Auto"/>
+                    <DataGridTextColumn x:Name="repIdToColumn" Binding="{Binding RepartTo}" Header="Repart To" Width="Auto"/>
+                    <DataGridTextColumn x:Name="depotIdFromColumn" Binding="{Binding MagFrom}" Header="Magazine From" Width="Auto"/>
+                    <DataGridTextColumn x:Name="depotIdToColumn" Binding="{Binding MagTo}" Header="Magazine To" Width="Auto"/>
+                    <DataGridTextColumn x:Name="productIdColumn" Binding="{Binding Product_Name}" Header="Article" Width="Auto"/>
+                    <DataGridTextColumn x:Name="commentsColumn" Binding="{Binding Comments}" Header="comments" Width="Auto"/>
+                    <DataGridTextColumn x:Name="quantityColumn" Binding="{Binding Quantity}" Header="Quantity" Width="Auto"/>
+                    <DataGridTextColumn x:Name="costPerUnitColumn" Binding="{Binding CostPerUnit}" Header="Cost/Unit" Width="Auto"/>
+                    <DataGridTextColumn x:Name="njesiaIdColumn" Binding="{Binding Njesia_Name}" Header="Unit" Width="Auto"/>
+                    <DataGridTextColumn x:Name="productCostColumn" Binding="{Binding ProductCost}" Header="Product Cost" Width="Auto"/>
                 <DataGridTextColumn x:Name="productMoveCostColumn" Binding="{Binding ProductMoveCost}" Header="Total " Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
