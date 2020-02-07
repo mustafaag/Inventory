@@ -16,11 +16,11 @@
     <StackPanel Background="White">
         <Grid Height="100">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="89*" />
+                <ColumnDefinition Width="89*" />
+                <ColumnDefinition Width="89*" />
+                <ColumnDefinition Width="74*" />
+                <ColumnDefinition Width="59*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -40,35 +40,33 @@
                 <Label  Foreground="Black" FontWeight="Bold" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Artikulli ne Dalje:</Label>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" DataContext="{StaticResource productsViewSource}">
-                <ComboBox Name="cmbxProductMaster" Foreground="Black" DisplayMemberPath="Product_Name" ItemsSource="{Binding}" SelectedValuePath="Product_ID"></ComboBox>
+                <ComboBox Name="cmbxProductMaster" Foreground="Black" DisplayMemberPath="Product_Name" SelectionChanged="CmbxProductMaster_SelectionChanged" ItemsSource="{Binding}" SelectedValuePath="Product_ID"></ComboBox>
             </Grid>
             <Grid  Grid.Row="0" Grid.Column="2" >
                 <Label  Foreground="Black"  FontWeight="Bold" FontSize="15" Width="150" HorizontalAlignment="Left" Margin="30 10">Nengroup:</Label>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="3" DataContext="{StaticResource subGroupsViewSource}"               >
-                <ComboBox Name="cmbSubGroupId"  Foreground="Black" SelectionChanged="CmbSubGroupId_SelectionChanged" DropDownClosed="CmbSubGroupId_DropDownClosed" DisplayMemberPath="SubGroup_Name" ItemsSource="{Binding}" SelectedValuePath="SubGroup_ID"  SelectedValue="SubGroup_ID"></ComboBox>
+                <ComboBox Name="cmbSubGroupId"  Foreground="Black" SelectionChanged="CmbSubGroupId_SelectionChanged"  DisplayMemberPath="SubGroup_Name" ItemsSource="{Binding}" SelectedValuePath="SubGroup_ID"  SelectedValue="SubGroup_ID"></ComboBox>
             </Grid>
-            <Grid Grid.Column="2" Grid.Row="1">
+            <!--<Grid Grid.Column="2" Grid.Row="1">
                 <Button Background="Red" Width="120" HorizontalAlignment="Center">Reset</Button>
-            </Grid>
+            </Grid>-->
             <Grid Grid.Column="3" Grid.Row="1">
                 <Button Background="Green" Width="120" HorizontalAlignment="Center" Click="Button_Click">Add</Button>
             </Grid>
-            <Grid Grid.Column="4" Grid.Row="1">
-                <Button Background="LightBlue" Width="100" HorizontalAlignment="Center">Print</Button>
-            </Grid>
+          
         </Grid>
         <Separator  />
         <Grid DataContext="{StaticResource recepturatViewSource}">
             <DataGrid x:Name="recepturatDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" IsReadOnly="True" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="masterProductIdColumn" Binding="{Binding MasterProductId}" Header="Master Product Id" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="additionalProductColumn" Binding="{Binding AdditionalProduct}" Header="Additional Product" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="idColumn" Binding="{Binding ID}" Header="Id" IsReadOnly="True" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="masterProductIdColumn" Binding="{Binding masterProduct}" Header="Master Product " Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="additionalProductColumn" Binding="{Binding additional}" Header="Additional Product" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="quantityColumn" Binding="{Binding Quantity}" Header="Quantity" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="costPerUnitColumn" Binding="{Binding CostPerUnit}" Header="Cost Per Unit" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="costTotalColumn" Binding="{Binding CostTotal}" Header="Cost Total" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="measure_IdColumn" Binding="{Binding Measure_Id}" Header="Measure Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="measure_IdColumn" Binding="{Binding Njesia}" Header="Measure" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="commentsColumn" Binding="{Binding Comments}" Header="Comments" Width="SizeToHeader"/>
                 </DataGrid.Columns>
             </DataGrid>
